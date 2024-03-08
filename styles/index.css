@@ -1,0 +1,27 @@
+body {
+    background-color: whitesmoke;
+}
+h1 {
+    text-align: left;
+    font-family: monospace;
+    margin-left: 40px;
+}
+.content{
+    overflow: hidden;
+    background-color: bisque;
+}
+.content a {
+    margin-left: 30px;
+    float: left;
+    padding:  10px 10px;;
+}
+.topleft {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+}
+.container{
+    margin-left: 30px;
+    width: 90%;
+    font-size: 18px;
+}
