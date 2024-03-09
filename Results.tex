@@ -1,0 +1,634 @@
+\documentclass[answers, a4paper, 12pt]{exam}
+\usepackage{amsmath,amssymb,amsfonts,amscd,ragged2e}
+\usepackage{multicol,fancybox,tabularx,textcomp,tabulary,pbox,ifthen,hyperref,etoolbox,color,sectsty,bm}
+\usepackage{mVersion}
+\usepackage[dvipsnames]{xcolor}
+\sectionfont{\color{red}}
+\subsectionfont{\color{cyan}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}{Definition}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Aut}{Aut}
+\renewcommand{\baselinestretch}{1.2}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\pagestyle{headandfoot}
+\firstpagefooter{}{}{\tiny Page \thepage\ of \numpages\normalsize}
+\runningfooter{}{}{\tiny Page \thepage\ of \numpages\normalsize}
+\extrawidth{.65in}
+\extraheadheight{-0.25in}
+\extrafootheight{-0.40in}
+%\shadedsolutions
+\renewcommand{\solutiontitle}{\noindent\textbf{\color{red} Solution:}\par\noindent}
+\printanswers
+\pointformat{[\themarginpoints]}
+\begin{document}
+\thispagestyle{empty}
+\tableofcontents
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\newpage
+\section{Matrix Analysis}
+\begin{theorem}
+    Let $V$ be a complex vector space of dimension $n$ and $T:V\to V$ is linear. Then $T$ has a invariant subspace of dimension $j$ for each $j=1,2,\ldots,n$.
+\end{theorem}
+\begin{theorem}[\textbf{Schur complement}]
+    Let $A=\begin{bmatrix}
+        P & Q \\
+        R & S
+    \end{bmatrix}$, where $P$ and $S$ are square matrices. Suppose that $S$ is nonsingular. Then the \textbf{Schur complement} of $S$ in $A$ is given by $$A/S=P-QS^{-1}R.$$
+    Similarly if $P$ is nonsingular, the \textbf{Schur complement} of $P$ in $A$ is given by $$A/P=S-RP^{-1}Q.$$ If $S/ P$ is singular, we replace $S^{-1}/ P^{-1}$ by its \textbf{Moore-Penrose inverse} $S^{\dagger}/P^{\dagger}$.
+\end{theorem}
+\begin{theorem}[\textbf{Singular-Value decomposition}]
+    Let $A\in M_{n, m}$ be given, let $q=\min\{m,n\}$ and rank$A=r$.
+    \begin{enumerate}
+        \item There are unitary matrices $V\in M_n$ and $W\in M_m$, and a square diagonal matrix
+        $$\Sigma_{q}=\begin{bmatrix}
+            \sigma_1 & & 0\\
+            & \ddots & \\
+            0 & & \sigma_q 
+        \end{bmatrix}$$
+        such that $\sigma_1\geq\sigma_2\geq\cdots\geq\sigma_r>0=\sigma_{r+1}=\cdots=\sigma_q$ and $A=V\Sigma W^*$ in which
+        $$\Sigma=\Sigma_q\,\,\,\text{if}\,\,\,m=n,$$
+        $$\Sigma=\begin{bmatrix}
+            \Sigma_q & 0
+        \end{bmatrix} \,\,\,\text{if}\,\,\,m>n,$$
+        $$\Sigma=\begin{bmatrix}
+            \Sigma_q \\ 0
+        \end{bmatrix}\,\,\,\text{if}\,\,\,m<n.$$
+        \item The parameters $\sigma_1,\ldots,\sigma_r$ are the positive square roots of the decreasingly ordered nonzero eigenvalues of $AA^*$, which are the same as the decreasingly ordered nonzero eigenvalues of $A^*A$.
+    \end{enumerate}
+\end{theorem}
+\begin{theorem}
+    
+\end{theorem}
+\begin{theorem}[\textbf{QR factorization}]
+    Let $A\in M_{n,m}$ be given.
+    \begin{enumerate}
+        \item if $n\geq m$, there is a $Q\in M_{n,m}$ with orthogoal columns and an upper triangular $R\in M_m$ with nonnegative main diagonal entries such that $A=QR$.
+        \item If rank$A=m$, $Q$ and $R$ are uniquely determined and the main diagonal entries of $R$ are all positive.
+        \item If $m=n$, the $Q$ is unitary.
+        \item There is a unitary $Q\in M_n$ and an upper triangular $R\in M_{n,m}$ with nonegative diagonal entries such that $A=QR$.
+        \item If $A$ is real, then $Q$ and $R$ may be taken to be real.
+    \end{enumerate}
+\end{theorem}
+\begin{theorem}\label{thm1}
+    Let $\|\cdot\|$ be a matrix norm on $M_n$, let $A\in M_n$, and let $\lambda$ be an eigenvalue of $A$. Then 
+    \begin{enumerate}
+        \item $|\lambda|\leq\rho(A)\leq\|A\|$,
+        \item $\rho(A)\geq |\lambda|\geq\frac{1}{\|A\|}$ provided $A$ is nonsingular.
+    \end{enumerate}
+\end{theorem}\label{thm2}
+\begin{theorem}
+    Let $A\in M_n$ and $\epsilon>0$ be given. There is a matrix norm $\|\cdot\|$ such that $$\rho(A)\leq\|A\|\leq\rho(A)+\epsilon.$$
+\end{theorem}
+\begin{theorem}\label{thm3}
+    Let $A\in M_n$ be given. If there is a matrix norm $\|\cdot\|$ such that $\|A\|<1$, then $\displaystyle\lim_{k\to\infty}{A^k}=0$, that is, each entry of $A^k$ tends to zero as $k\to\infty$.
+\end{theorem}
+\begin{theorem}[\textbf{Gelfand formula}]\label{thm4}
+    Let $\|\cdot\|$ be a matrix norm on $M_n$ and let $A\in M_n$. Then $\rho(A)=\displaystyle\lim_{k\to\infty}{\|A^k\|^{1/k}}$.
+\end{theorem}
+\begin{theorem}\label{thm5}
+    Let $R$ be the radius of convergence of a scalar power series $\sum_{k=0}^{\infty}{a_kz^k}$, and let $A\in M_n$ be given. The matrix power series $\sum_{k=0}^{\infty}{a_kA^k}$ converges if $\rho(A)<R$.
+\end{theorem}
+\begin{remark}
+    Let $R$ be the radius of convergence of a scalar power series $\sum_{k=0}^{\infty}{a_kz^k}$ and let $A\in M_n$ be given such that $\rho(A)<R$, then the series $\sum_{k=0}^{\infty}{a_kA^k}$ converges. Let $T_n(A)=\sum_{k=0}^{n}{a_kA^k}$ then $\lim_{k\to\infty}{T_n}(A)=\sum_{k=0}^{\infty}{a_kA^k}$. Let $x\neq 0$ such that $Ax=\mu x$. Then $$T_n(A)x=\left(\sum_{k=0}^{n}{a_kA^k}\right)x=\sum_{k=0}^{n}{a_k(A^kx)}=\sum_{k=0}^{n}{a_k(\mu^kx)}=\left(\sum_{k=0}^{n}{a_k\mu^k}\right)x=T_n(\mu)x.$$
+    Since $\mu<R$ so the series $\sum_{k=0}^{\infty}{a_k\mu^k}$ converges and hence $\left(\sum_{k=0}^{\infty}{a_kA^k}\right)x=\left(\sum_{k=0}^{\infty}{a_k\mu^k}\right)x$.
+\end{remark}
+\begin{remark}
+    Let $A\in M_n$, $p_A$ be the characteristic polynomial of $A$ and let $\lambda_1, \lambda_2, \ldots, \lambda_n$ are the eigenvalues of $A$. Then $$p_A(t)=(t-\lambda_1)(t-\lambda_2)\cdots(t-\lambda_n),$$
+    i.e., $$p_A(t)=t^n-S_1(A)t^{n-1}+S_2(A)t^{n-2}+\cdots+(-1)^{n-1}S_{n-1}(A)t+(-1)^nS_n(A).$$
+\end{remark}
+
+\begin{theorem}[\textbf{The Perron–Frobenius Theorem}]
+    Any square matrix with positive entries has a unique eigenvector with positive entries (up to a multiplication by a positive scalar), and the corresponding eigenvalue has multiplicity one and is strictly greater than the absolute value of any other eigenvalue.
+\end{theorem}
+
+\newpage
+\section{Complex Analysis}
+
+\textbf{Classification of isolated singularities: } let $z_0$ be an islated singularity of $f$.
+\begin{enumerate}\justifying
+    \item \textbf{(Removable singularity:)} If there exists $r>0$ and an analytic function $g:B_{r}{(z_0)}\to\C$ such that $f(z)=g(z)$ for all $z\in B_{r}{(z_0)}\setminus\{z_0\}$, then $z_0$ is called a removable singularity of $f$.
+    \item \textbf{(Pole:)} If $\displaystyle\lim_{z\to z_0}{f(z)}=\infty$, then $z_0$ is called a pole of $f$.
+    \item \textbf{(Essential singularity:)} If $z_0$ is neither a removable singularity of $f$ nor a pole of $f$, then $z_0$ is called an essential singularity of $f$.
+\end{enumerate}
+
+\begin{theorem}[\textbf{Charaterizations of Removable Singularity}]
+    Let $z_0$ be an isolated singularity of $f:G\to\C$, where $G$ is an open set in $\C$. Then the following are equivalent.
+    \begin{enumerate}
+        \item $z_0$ is a removable singularity of $f$.
+        \item $\displaystyle\lim_{z\to z_0}{f(z)}$ exists in $\C$.
+        \item $f$ is bounded on $B_{\delta}{(z_0)}\setminus\{z_0\}$ for some $\delta>0$.
+        \item $\displaystyle\lim_{z\to z_0}{(z-z_0)f(z)}=0$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[\textbf{Charaterizations of Pole}]
+    Let $z_0$ be an isolated singularity of $f:G\to\C$, where $G$ is an open set in $\C$. Then the following are equivalent.
+    \begin{enumerate}
+        \item $z_0$ is a pole of $f$.
+        \item There exist $m\in\N$, $\delta>0$ and an analytic function $g:B_{\delta}{(z_0)}\to\C$ such that $g(z_0)\neq 0$ and $f(z)=\frac{g(z)}{(z-z_0)^m}$ for all $z\in B_{\delta}{(z_0)}\setminus\{z_0\}$.
+        \item There exists $m\in\N$ such that the function $h:G\to\C$, defined by $h(z)=(z-z_0)^mf(z)$ for all $z\in G$, has a removable singularity at $z_0$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[\textbf{Casorati-Weierstrass theorem}]
+    Let $G$ be an open set in $\C$. If $z_0$ is an essential singularity of $f:G\to\C$, then for every $\delta>0$, $f(G\cap(B_{\delta}{(z_0)}\setminus\{z_0\}))$ is dense in $\C$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Picard's Little Theorem}]
+    If $f$ is an entire function that omits two values then $f$ is a constant.
+\end{theorem}
+
+\begin{theorem}[\textbf{Picard's Great Theorem}]
+    Suppose an analytic function $f$ has an essential singularity at $z=a$. Then in each neighborhood of $a$, $f$ assumes each complex number, with one possible exception, an infinite number of times.
+\end{theorem}
+
+\begin{proposition}
+    If $z_2, z_3, z_4$ are distinct points in $\C_{\infty}$ and $\omega_2, \omega_3, \omega_4$ are also distinct points in $\C_{\infty}$, then there is one and only one M$\ddot{o}$bius transformation $S$ such that $Sz_2=\omega_2, Sz_3=\omega_3, Sz_4=\omega_4$.
+\end{proposition}
+
+\begin{theorem}
+    Let $D=\{z: |z| < 1\}$ and suppose $f$ is analytic on $D$ with
+    \begin{enumerate}
+        \item $|f(z)|\leq 1$ for $z$ in $D$,
+        \item $f(0)=0$.
+    \end{enumerate}
+    Then $|f'(0)|\leq 1$ and $|f(z)|\leq|z|$ for all $z$ in $D$. Moreover if $|f'(0)|=1$ or if $|f(z)|=|z|$ for some $z\neq 0$ then there is a constant $c$, $|c|=1$, such that $f(w)=cw$ for all $w$ in $D$.
+\end{theorem}
+
+\begin{definition}
+    A set $\mathcal{F}\subset C(G,\Omega)$ is \textbf{normal} if each sequence in $\mathcal{F}$ has subsequence which converges to a function $f$ in $C(G,\Omega)$.
+\end{definition}
+
+\begin{theorem}
+    A set $\mathcal{F}\subset C(G,\Omega)$ is normal iff its closure is compact.
+\end{theorem}
+
+\begin{definition}
+    A set $\mathcal{F}\subset C(G,\Omega)$ is \textbf{equicontinuous} at a point $z_0$ in $G$ iff for every $\epsilon>0$ there is a $\delta>0$ such that for $|z-z_0|<\delta$,
+    $$d(f(z),f(z_0))<\epsilon$$
+    for every $f$ in $\mathcal{F}$.\\
+    $\mathcal{F}\subset C(G,\Omega)$ is \textbf{equicontinuous} over a set $E\subset G$ iff for every $\epsilon>0$ there is a $\delta>0$ such that for $z$, $z'$ in $E$ $|z-z'|<\delta$,
+    $$d(f(z),f(z'))<\epsilon$$
+    for all $f$ in $\mathcal{F}$.
+\end{definition}
+
+\begin{theorem}
+    Suppose $\{f_n\}$ is a sequence in $C(G,\Omega)$ which converge to $f$ and $\{z_n\}$ is a sequence in $G$ which converge to $z$ in $G$. Then $\lim{f_n(z_n)}=f(z)$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Dini's Theorem}]
+    Let $\{f_n\}$ be a sequence in $C(G,\R)$ which is monotonically increasing and $\lim{f_n(z)}=f(z)$ for all $z$ in $G$ where $f\in C(G,\R)$ then $f_n\to f$.
+\end{theorem}
+
+\begin{theorem}
+    Let $\{f_n\}$ be a sequence in $C(G,\Omega)$ which is equicontinuous in $G$ and $\lim{f_n(z)}=f(z)$ for all $z$ in $G$ where $f\in C(G,\Omega)$ then $f_n\to f$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Arzela-Ascoli Theorem}]
+    A set $\mathcal{F}\subset C(G,\Omega)$ is normal iff the following two conditions are satisfied:
+    \begin{enumerate}
+        \item for each $z$ in $G$, $\{f(z): f\in\mathcal{F}\}$ has compact closure in $\Omega$.
+        \item $\mathcal{F}$ is equicontinuous at each point of $G$.
+    \end{enumerate}
+\end{theorem}
+
+\justifying $\bm{H(G)}$ is the collection of analytic functions on $G$, a open subset of the complex plane.
+
+\begin{theorem}
+    If $\{f_n\}$ is a sequence in $H(G)$ and $f$ in $C(G,\C)$ such that $f_n\to f$ then $f$ is analytic and $f_n^{(k)}\to f^{(k)}$ for each integer $k\geq 1$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Hurwit'z Theorem}]
+    Let $G$ be a region and suppose that the sequence $\{f_n\}$ in $H(G)$ converges to $f$. If $f\not\equiv 0$, $\overline{B}(a,R)\subset G$, and $f(z)\neq 0$ for $|z-a|<R$ then there is an integer $N$ such that for $n\geq N$, $f$ and $f_n$ have same number of zeros in $B(a,R)$.
+\end{theorem}
+
+\begin{theorem}
+    If $\{f_n\}\in H(G)$ converges to $f$ in $H(G)$ and each $f_n$ never vanishes on $G$ then either $f\equiv 0$ or $f$ never vanishes.
+\end{theorem}
+
+\begin{definition}
+    A set $\mathcal{F}\subset H(G)$ is \textbf{locally bounded} if for each point $a$ in $G$ there are constants $M$ and $r>0$ such that for all $f$ in $\mathcal{F}$,
+    $$|f(z)|\leq M,\,\,\,\text{for\,\,}|z-a|<r.$$
+\end{definition}
+
+\begin{theorem}[\textbf{Montel's Theorem}]
+    A family $\mathcal{F}$ in $H(G)$ is normal iff $\mathcal{F}$ is locally bounded.
+\end{theorem}
+
+\begin{theorem}
+    If $G$ is a region and $\{f_n\}\subset H(G)$ is locally bounded and $f\in H(G)$ has the property that $A=\{z\in G: \lim{f_n(z)=f(z)}\}$ has a limit point in $G$ then $f_n\to f$.
+\end{theorem}
+
+\begin{theorem}
+    If $\mathcal{F}\subset H(G)$ is normal then $\mathcal{F}'=\{f': f\in\mathcal{F}\}$ is also normal.
+\end{theorem}
+
+\begin{theorem}
+    If $\{f_n\}\subset H(G)$ be a sequence of one-one functions which converge to $f$. Then either $f$ is one-one or $f$ is a constant function.
+\end{theorem}
+
+\begin{theorem}[\textbf{Riemann Mapping Theorem}]
+    Let $G$ be a simply connected region which is not the whole plane and let $a\in G$. then there is a unique analytic function $f:G\to\C$ having the properties:
+    \begin{enumerate}
+        \item $f(a)=0$ and $f'(a)>0$;
+        \item $f$ is one-one;
+        \item $f(G)=\{z:|z|<1\}$.
+    \end{enumerate}
+\end{theorem}
+
+\justifying Let $G$ be a region. Define $G^*=\{z: \overline{z}\in G\}$. If $G=G^*$ then $G$ is said to be symmetric. If $G$ is symmetric then define $G_+=\{z\in G:\Im(z)>0\}$,  $G_-=\{z\in G:\Im(z)<0\}$ and $G_0=\{z\in G:\Im(z)=0\}$.
+
+\begin{theorem}[\textbf{Schwarz Reflection Principle}]
+    Let $G$ be a symmetric region. If $f:G_+\cup G_0\to\C$ is a continuous function which is analytic on $G_+$ and if $f(x)$ is real for $x\in G_0$, then there is an analytic function $g:G\to\C$ such that $g(z)=f(z)$ in $G_+\cup G_0$.
+\end{theorem}
+
+\begin{theorem}
+    Let $D=\{z: |z|<1\}$ and suppose that $f:\delta D\to\R$ is a continuous function. Then there is a continuous function $u:\overline{D}\to\R$ such that
+    \begin{enumerate}
+        \item $u(z)=f(z)$ for $z$ in $\delta D$,
+        \item $u$ is harmonic in $D$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+    If $G$ is an open subset of $\C$ then $\bm{\textbf{Har}(G)}$ is the space of harmonic functions on $G$.
+\end{definition}
+
+\begin{theorem}[\textbf{Harnack's Theorem}]
+    Let $G$ be a region.
+    \begin{enumerate}
+        \item The metric space $\text{Har}(G)$ is complete.
+        \item If $\{u_n\}$ is a sequence in $\text{Har}(G)$ such that $u_1\leq u_2\leq\cdots$ then either $u_n(z)\to\infty$ on compact subsets of $G$ or ${u_n}$ converges in $\text{Har}(G)$ to a harmonic function.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Let $D=\{z: |z|<1\}$ and $f:\delta D\to\C$ is a continuous function then there is a sequence $\{p_n(z,\overline{z})\}_n$ of polynomials in $z$ and $\overline{z}$ such that $p_n(z,\overline{z})\to f(z)$ uniformly for $z$ in $\delta D$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Bloch's Theorem}]
+    let $f$ be an analytic function on a region containing the closure of the disk $D=\{z: |z|<1\}$ and satisfying $f(0)=0$, $f'(0)=1$. Then there is a disk $S\subset D$ on which $f$ is one-one and such that $f(S)$ contains a disk of radius $\frac{1}{72}$.
+\end{theorem}
+
+\begin{theorem}
+    Let $G$ be a simply connected region and suppose that $f$ is an analytic function on $G$ that does not assume the values 0 or 1. Then there is an analytic function $g$ on $G$ such that
+    $$f(z)=-\exp{(i\pi\cosh{[2g(z)]})}$$
+    for $z$ in $G$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Schottky's Theorem}]
+    For each $\alpha$ and $\beta$, $0<\alpha<\infty$ and $0\leq\beta\leq 1$, there is a constant $C(\alpha, \beta)$ such that if $f$ is an analytic function on some simply connected region containing $\overline{B}(0,1)$ that omits the values $0$ and $1$, and such that $|f(0)|\leq\alpha$, then $|f(z)|\leq C(\alpha,\beta)$ for $|z|\leq\beta$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Montel-Caratheodory Theorem}]
+    If $\mathcal{F}$ is the family of all analytic functions on a region $G$ that do not assume the values $0$ and $1$, then $\mathcal{F}$ is normal in $C(G,\C_{\infty})$.
+\end{theorem}
+
+\begin{theorem}
+    If $f$ has an isolated singularity at $z=a$ and if there are two complex numbers that are not assumed infinitely often by $f$ then $z=a$ is either a pole or a removable singularity.
+\end{theorem}
+
+\begin{theorem}
+    If $f$ is an entire function that is not a polynomial then $f$ assumes every complex number, with one exception, an infinite number of times.
+\end{theorem}
+
+\begin{theorem}
+    If $f$ is a one-one entire function then $f(z)=az+b$ for some constants $a$ and $b$, $a\neq 0$.
+\end{theorem}
+
+\newpage
+\section{Topology}
+
+\textbf{Note: }\justifying Let $(Y,d)$ be a metric space. Let $\overline{d}(a,b)=\min\{d(a,b), 1\}$ be the standard bounded metric on $Y$. If $\mathbf{x}=(x_\alpha)_{\alpha\in J}$ and $\mathbf{y}=(y_\alpha)_{\alpha\in J}$ are points in $Y^J$, let
+$$\overline{\rho}(x,y)=\sup\{\overline{d}(x_\alpha,y_\alpha) | \alpha\in J\}.$$
+It is called the \textbf{uniform metric} on $Y^J$.
+
+\begin{theorem}
+    Let $X$ be a topological space and $(Y,d)$ be a metric space. The set $C(X,Y)$ is closed in $Y^X$ under the uniform metric. So is the set $B(X,Y)$ of bounded functions. IF $Y$ is complete then these spaces are complete in the uniform metric.
+\end{theorem}
+
+\begin{theorem}
+    Let $(X,d)$ be a metric space. There is an isometric imbedding of $X$ into a complete metric space.
+\end{theorem}
+
+\begin{theorem}
+    Let $(X,d)$ be a metric space. Then $(X,d)$ is complete if and only if for every nested sequence $A_1\supset A_2 \supset\cdots$ of nonempty closed sets of $X$ such that $\text{diam }{A_n}\to 0$, the intersection of the sets $A_n$ is nonempty.
+\end{theorem}
+
+\begin{theorem}
+    Given $n$, there is a continuous surjective map $g:I\to I^n$.
+\end{theorem}
+
+\begin{theorem}
+    There is a continuous surjective map $g:\R\to \R^n$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Hahn-Mazurkiewicz theorem}]
+    Let $X$ be a Hausdorff space. Then there is a continuous surjective map $f:I\to X$ if and only if $X$ is compact, connected, locally connected, second-countable space.
+\end{theorem}
+
+\begin{definition}
+    $A\subset X$ has \textbf{empty interior} if $A$ contains no open set of $X$ other than empty set. Equivalently, $A$ has empty interior if every point of $A$ is a limit point of $A^c$ i.e. if $A^c$ is dense in $X$.
+\end{definition}
+
+\begin{definition}
+    A space $X$ is said to be a \textbf{baire space} if the following condition holds:\\
+    Given any countable collection $\{A_n\}$ of closed sets of $X$ each of which has empty interior in $X$, their union $\bigcup{A_n}$ also hase empty interior in $X$.
+    \begin{center}
+        \textbf{OR}
+    \end{center}
+    Given any countable collection $\{U_n\}$ of open sets of $X$, each of which is dense in $X$, their intersection $\bigcap{U_n}$ is dense in $X$.
+\end{definition}
+
+\begin{theorem}[\textbf{Baire Category Theorem}]
+    If $X$ is compact Hausdorff space or a complete metric space, then $X$ is a Baire space.
+\end{theorem}
+
+\begin{theorem}
+    Let $X$ be a space and $(Y,d)$ be a metric space. let $f_n:X\to Y$ be a sequence of continuous functions such that $f_n(x)\to f(x)$ for all $x\in X$, where $f:X\to Y$. If $X$ is a Baire space, the set of points at which $f$ is continuous is dense in $X$.
+\end{theorem}
+
+\begin{theorem}
+    If every point $x$ of $X$ has a neighborhood that is a Baire space, then $X$ is a Baire space.
+\end{theorem}
+
+\begin{theorem}
+    If $D$ is a countable dense subset of $\R$, there is no function $f:\R\to\R$ that is continuous precisely at the points of $D$.
+\end{theorem}
+
+\begin{proposition}
+    If $f_n$ is a sequence of continuous functions $f_n:\R\to\R$ such that $f_n(x)\to f(x)$ for each $x\in\R$, then $f$ is continuous at uncountably many points of $\R$.
+\end{proposition}
+
+\begin{proposition}
+    Let $X$ be a complete metrix space, and let $\mathcal{F}$ be a subset of $C(X,\R)$ such that for each $a\in X$, the set
+    $$\mathcal{F}_a=\{f(a): f\in\mathcal{F}\}$$
+    is bounded. Then there is a nonempty open set $U$ of $X$ on which the functions in $\mathcal{F}$ is uniformly bounded.
+\end{proposition}
+
+\newpage
+\section{Algebra}
+\begin{definition}[\textbf{Euler phi function, $\bm{\phi(n)}$}]
+    Euler phi function counts the number of positive integers less than $n$ that are coprime to $n$.\\
+    If $n=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$ then,
+    $$\phi(n)=n\left(1-\frac{1}{p_1}\right)\cdots\left(1-\frac{1}{p_k}\right).$$
+\end{definition}
+\textbf{Note:} Let $G$ acts on a set $X$. For $x\in X$ orbit of $x$ in $X$ is given by $\mathcal{O}(x)=\{g.x : g\in G\}$ and the stabilizer of $x$ in $G$ is given by $G_x=\{g\in G : g.x=x\}$.
+
+\begin{theorem}
+    Let $G$ acts on $X$ and $x\in X$ then $|\mathcal{O}(x)|=[G:G_x]$.
+\end{theorem}
+\begin{theorem}
+    Let $R$ be an integral domain. then
+    \begin{enumerate}
+        \item degree $p(x)q(x)$=degree $p(x)$ + degree $q(x)$ if $p(x), q(x)$ are nonzero.
+        \item the units of $R[x]$ are just the units of $R$.
+        \item $R[x]$ is an integral domain.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Let $I$ be an ideal in $R$ and let $(I)=I[x]$ denote the ideal of $R[x]$ generated by $I$ (the set of polynomials with coefficients in $I$). Then $$R[x]/(I)\cong(R/I)[x].$$
+    In particular, if $I$ is a prime ideal of $R$ then $(I)$ is a prime ideal of $R[x]$.
+\end{theorem}
+
+\begin{theorem}
+    Let $F$ be a field. The polynomial ring $F[x]$ is a Euclidean Domain. Specifically, if $a(x)$ and $b(x)$ are two polynomials in $F[x]$ with $b(x)$ nonzero, then there are unique $q(x)$ and $r(x)$ in $F[x]$ such that
+    $$a(x)=q(x)b(x)+r(x)\,\,\,\,\text{ with } r(x)=0\,\,\text{ or degree $r(x)<$ degree $b(x)$}.$$
+\end{theorem}
+
+\begin{theorem}
+    If $F$ is a field, then $F[x]$ is a PID and a UFD.
+\end{theorem}
+
+\begin{theorem}[\textbf{Gauss' Lemma}]
+    Let $R$ be a UFD with field of fraction $F$ and let $p(x)\in R[x]$. If $p(x)$ is reducible in $F[x]$ then $p(x)$ is reducible in $R[x]$. More precisely, if $p(x)=A(x)B(x)$ for some nonconstant polynomials $A(x), B(x)\in F[x]$, then there are nonzero elements $r,s\in F$ such that $rA(x)=a(x)$ and $sB(x)=b(x)$ both lie in $R[x]$ and $p(x)=a(x)b(x)$ is a factorization in $R[x]$.
+\end{theorem}
+
+\begin{theorem}
+    Let $R$ be a UFD, let $F$ be the field of fractions and let $p(x)\in R[x]$. Suppose that gcd of the coefficients of $p(x)$ is 1. Then $p(x)$ is irreducible in $R[x]$ if and only if it is irreducible in $F[x]$. In particular, if $p(x)$ is a monic polynomial that is irreducible in $R[x]$, then $p(x)$ is irreducible in $F[x]$.
+\end{theorem}
+
+\begin{theorem}
+    $R$ is UFD if and only if $R[x]$ is UFD.
+\end{theorem}
+
+\begin{theorem}
+    Let $p(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0$ be a polynomial of degree $n$ with integer coefficients. if $r/s\in\Q$ is in lower terms and $r/s$ is a root of $p(x)$, then $r|a_0$ and $s|a_n$. In particular, if $p(x)$ is a monic polynomial with integer coefficients and $p(d)\neq0$ for all integer $d$ dividing $a_0$, then $p(x)$ has no roots in $\Q$.
+\end{theorem}
+
+\begin{theorem}
+    Let $I$ be a proper ideal in the integral domain $R$ and let $p(x)$ be a nonconstant monic polynomial in $R[x]$. If the image of $p(x)$ in $(R/I)[x]$ cannot be factored in $(R/I)[x]$ into two polynomials of smaller degree, then $p(x)$ is irreducible in $R[x]$. (Converse need not be true, for example let $R=\Z, I_1=3\Z, I_2=2\Z$ and $p(x)=x^2+1$ then p is irreducible in $\Z$ as it is irreducible in $(R/I_1)[x]$ but is reducible in $(R/I_2)[x]$).
+\end{theorem}
+
+\begin{theorem}[\textbf{Eisenstein's Criterion}]
+    Let $P$ be a prime ideal of the integral domain $R$ and let $f(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_0$ be a polynomial in $R[x]$. Suppose $a_{n-1},\ldots, a_1, a_0$ are all elements of $P$ and suppose that $a_0$ is not an element of $P^2$. Then $f(x)$ is irreducible in $R[x]$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Eisenstein's Criterion for integer polynomials}]
+    Let $P$ be a prime in $\Z$ and let $f(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_0\in\Z[x]$, $n\geq 1$. Suppose that $p$ divides $a_i$ for all $i\in\{0,1,\ldots,n-1\}$ but that $p^2$ does not divide $a_0$. Then $f(x)$ is both irreducible in $\Z[x]$ and $\Q[x]$.
+\end{theorem}
+
+\begin{theorem}
+    The maximal ideals in $F[x]$ are the ideals $(f(x))$ generated by irreducible polynomials $f(x)$. In particular, $F[x]/(f(x))$ is a field if and only if $f(x)$ is irreducible.
+\end{theorem}
+
+\begin{theorem}
+    Let $g(x)$ be a nonconstant monic element of $F[x]$ and let
+    $$g(x)=f_1(x)^{n_1}f_2(x)^{n_2}\cdots f_k(x)^{n_k}$$
+    be its factorization into irreducibles, where the $f_i(x)$ are distinct. Then we have the following isomorphism of rings:
+    $$F[x]/(g(x))\cong F[x]/(f_1(x)^{n_1})\times F[x]/(f_2(x)^{n_2})\times\cdots\times F[x]/(f_k(x)^{n_k}).$$
+\end{theorem}
+
+\begin{theorem}
+    A finite subgroup of the multiplicative group of field is cyclic. In particular, if $F$ is a finite field, then the multiplicative group $F^{\times}$ of nonzero elements of $F$ is a cyclic group.
+\end{theorem}
+
+\begin{definition}
+    A commutative ring $R$ with 1 is called \textbf{Noetherian} if every ideal of $R$ is finitely generated.
+\end{definition}
+
+\begin{theorem}[\textbf{Hilbert's Basis Theorem}]
+    If $R$ is a Noetherian ring then so is the polynomial ring $R[x]$.
+\end{theorem}
+
+\subsection{Spliting field of $x^n-1$}
+In any spliting field $K$ over $\Q$ for $x^n-1$ the collection of $n^{\text{th}}$ roots of unity form a group under multiplication since if $x^n=1$ and $y^n=1$ then $(xy)^n=1$. It follows that this is a cyclic group.
+\begin{definition}
+    A generator of the cyclic group of $n^{\text{th}}$ root of unity is called a \textbf{primitive} $n^{\text{th}}$ root of unity.
+\end{definition}
+Let $\zeta_n$ denote that primitive $n^{\text{th}}$ root of unity then other primitive $n^{\text{th}}$ roots of unity are the elements $\zeta^a_n$ where $1\leq a<n$ and $(a,n)=1$, since these are the generators for a cyclic group of order $n$. In particular, there are precisely $\psi(n)$ primitive $n^{\text{th}}$ roots of unity, where, $\psi(n)$ denote the Eular $\psi$- function.
+\begin{definition}
+    The spliting field of $x^n-1$ over $\Q$, $\Q(\zeta_n)$ is called the cyclotomic field of $n^{\text{th}}$ roots of unity.
+\end{definition}
+\textbf{Note:} When $n=p$ is a prime,
+$$x^p-1=(x-1)(x^{p-1}+x^{p-2}+\cdots+1)$$
+and since $\zeta_p\neq 1$ it follows that $\zeta_p$ is a root of the polynomial
+$$\Phi_p(x)=\frac{x^p-1}{x-1}=x^{p-1}+x^{p-2}+\cdots+1$$
+which is irreducible. It follows that $\Phi_p(x)$ is the minimal polynomial of $\zeta_p$ over $\Q$, so that $[\Q(\zeta_p):\Q]=p-1$.
+
+\subsection{Spliting field of $x^p-2$, where $p$ is prime}
+
+Let $p$ be a prime and consider the spliting field of $x^p-2$. If ${\alpha}^p-2=0$ then $(\zeta\alpha)^p-2=0$, where $\zeta$ is any $p^{\text{th}}$ root of unity. Hence the solutions of this equation are $$\zeta \sqrt[^p]{2},\,\,\,\zeta\,\,\,p^{\text{th}}\,\,\,\text{root of unity}$$
+where $\sqrt[^p]{2}$ denote the positive real $p^{\text{th}}$ root of 2 if we use to view these elements as complex numbers, and denote any one solutions of $x^p-2$ if we these roots abstractly. Clearly, the spliting field of $x^p-2$ over $\Q$ contains $\Q(\sqrt[^p]{2},\zeta_p)$. On the other hand, all the roots above lie in $\Q(\sqrt[^p]{2},\zeta_p)$, so that the spliting field if precisely $\Q(\sqrt[^p]{2},\zeta_p)$.\\
+$\Q(\sqrt[^p]{2},\zeta_p)$ contains $\Q(\zeta_p)$ and it is generated over it by $\sqrt[^p]{2}$, hence is an extension of degree at most $p$. If follows that the degree of this extension over $\Q$ is $\leq p(p-1)$.
+$$[\Q(\sqrt[^p]{2},\zeta_p):\Q]\leq[\Q(\sqrt[^p]{2},\zeta_p):\Q(\zeta_p)][\Q(\zeta_p):\Q]=p(p-1)$$
+so we have $[\Q(\sqrt[^p]{2},\zeta_p):\Q]=p(p-1)$ as $(p,p-1)=1$.
+\subsection{Finite Fields}
+\begin{theorem}
+    Let $p$ be a prime integer, and let $q=p^r$ be a positive power of $p$.
+    \begin{enumerate}
+        \item Let $K$ be a field of order $q$. The elements of $K$ are roots of the polynomial $x^q-x$.
+        \item The irreducible factors of the polynomial $x^q-x$ over the prime field $F=\mathbb{F}_p$ are the irreducible polynomials in $F[x]$ whose degrees divide $r$.
+        \item Let $K$ be a field of order $q$. The multiplicative group $K^{\times}$ of nonzero elements of $K$ is a cyclic group of order $q-1$.
+        \item There exists a field of order $q$, and all fields of order $q$ are isomorphic.
+        \item A field of order $p^r$ contains a subfield of order $p^k$ if and only if $k$ divide $r$.
+    \end{enumerate}
+\end{theorem}
+
+\newpage
+\section{Measure Theory}
+
+\begin{theorem}[\textbf{Egorov's Theorem}]
+    Suppose $(X, \mathcal{S}, \mu)$ is a measure space with $\mu(X)<\infty$. Suppose that $f_1,f_2,\ldots$ is a sequence of $\mathcal{S}$-measurable functions from $X$ to $\R$ that converges pointwise on $X$ to a function $f:X\to\R$. Then for every $\epsilon>0$, there exists a set $E\subset S$ such that $\mu(X\setminus E)<\epsilon$ and $f_1,f_2,\ldots$ converges uniformly to $f$ on $E$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Monotone Convergence Theorem}]
+    Suppose $(X, \mathcal{S}, \mu)$ is a measure space and $0\leq f_1\leq f_2\leq\cdots$ is an increasing sequence of $\mathcal{S}$-measurable functions. Define $f:X\to[0,\infty)$ by
+    $$f(x)=\lim_{k\to\infty}{f_k(x)}$$
+    Then
+    $$\lim_{k\to\infty}{\int{f_k\,d\mu}}=\int{f\, d\mu}$$
+\end{theorem}
+
+\begin{theorem}[\textbf{Bounded Convergence Theorem}]
+    Suppose $(X, \mathcal{S}, \mu)$ is a measure space with $\mu(X)<\infty$. Suppose that $f_1,f_2,\ldots$ is a sequence of $\mathcal{S}$-measurable functions from $X$ to $\R$ that converges pointwise on $X$ to a function $f:X\to\R$. If there exists $c\in(0,\infty)$ such that 
+    $$|f_k(x)|\leq c$$
+    for all $k\in\Z^+$ and all $x\in X$, then
+    $$\lim_{k\to\infty}{\int{f_k\,d\mu}}=\int{f\, d\mu}.$$
+\end{theorem}
+
+\begin{theorem}[\textbf{Dominated Convergence Theorem}]
+    Suppose $(X, \mathcal{S}, \mu)$ is a measure space, $f:X\to[-\infty, \infty]$ is $\mathcal{S}$-measurable, and $f_1,f_2,\ldots$ is a sequence of $\mathcal{S}$-measurable functions from $X$ to $[-\infty, \infty]$ such that
+    $$\lim_{k\to\infty}{f_k(x)}=f(x)$$
+    for almost every $x\in X$. If there exists an $\mathcal{S}$-measurable function $g:X\to[0, \infty]$ such that
+    $$\int{g\,d\mu}<\infty\,\,\,\,\text{and}\,\,\,\,|f_k(x)|\leq g(x)$$
+    for every $k\in\Z^+$ and almost every $x\in X$, then
+    $$\lim_{k\to\infty}{\int{f_k\,d\mu}}=\int{f\, d\mu}.$$
+\end{theorem}
+
+\newpage
+\section{Real Analysis}
+
+\begin{remark}
+    If $f$ is monotone, then $D(f)$ is countable. Conversely, any countable set is the set of discontinuities for some monotone function $f$. ($D(f)$ is the set of discontinuities of $f$)
+\end{remark}
+
+\begin{theorem}
+    If $f:\R\to\R$, then $D(f)$ is the countable union of closed sets in $\R$.
+\end{theorem}
+
+\begin{theorem}[\textbf{The Baire Category Theorem for $\bm{\R}$}]
+    If $(G_n)$ is a sequence of dense, open sets in $\R$, then $\displaystyle\bigcap_{n=1}^{\infty}{G_n}\neq\phi$. Infact $\displaystyle\bigcap_{n=1}^{\infty}{G_n}$ is dense in $\R$.
+\end{theorem}
+
+\begin{theorem}
+    For a function $f:[a,b]\to\R$, if $\displaystyle\int_{a}^{b}{|f(x)|\,dx}<\infty$, we have
+    $$\lim_{k\to\infty}{\int_{a}^{b}{f(x)e^{ikx}\,dx}}=0.$$
+\end{theorem}
+
+\begin{theorem}[Pigeonhole Principle]
+    If $kn+1$ objects ($k\geq 1$ not necessarily finite) are distributed among $n$ boxes, one of the boxex will contain at least $k+1$ objects.
+\end{theorem}
+
+\begin{theorem}
+    A nontrivial subgroup of the additive group of real numbers is either cyclic or it is dense in the set of real numbers.
+\end{theorem}
+
+\begin{theorem}
+    The determinant of the sum of the elements of a finite multiplicative group of matrices is nonzero only when the group consists of one element, the identity, in which case it is equal to 1.
+\end{theorem}
+
+\begin{remark}
+    A \textbf{representation} of a group is a homomorphism of the group into a group of matrices. A representation is called \textbf{irreducible} if there does not exist a basis in which it can be decomposed into blocks. Any representation of a finite group is the block sum of irreducible representations. The simplest representation, called the trivial representation, sends all elements of the group to the identity element. \textbf{For any nontrivial irreducible representation of a finite group $G$, the sum of the matrices of the representation is zero}.
+\end{remark}
+
+\begin{theorem}[\textbf{The Cesàro–Stolz Theorem}]
+    Let $(x_n)_n$ and $(y_n)_n$ be two sequences of real numbers with $(y_n)_n$ strictly positive, increasing, and unbounded. If
+    $$\lim_{n\to\infty}{\frac{x_{n+1}-x_n}{y_{n+1}-y_n}}=L,$$
+    then the limit
+    $$\lim_{n\to\infty}{\frac{x_n}{y_n}}=L$$
+    exists and is equal to $L$.
+\end{theorem}
+
+\begin{theorem}
+    If $(a_n)_{n\geq 1}$ converges to $L$, then
+    $$s_n=\frac{a_1+a_2+\cdots+a_n}{n}$$
+    also converges to $L$.
+\end{theorem}
+
+\begin{theorem}[\textbf{Dirichlet’s Test}]
+    The series $\sum{a_k}{b_k}$ is convergent if the sequence $(A_n)$, where $A_n=\sum_{k=1}^{n}{a_k}$ is bounded and $(b_k)$ is decreasing to zero.
+\end{theorem}
+
+\begin{theorem}
+    If $f:\R\to\R$ is a continuous periodic function with irrational period and if $$\sum_{n}{\frac{|f(n)|}{n}}<\infty,$$ then $f$ is identically zero.
+\end{theorem}
+
+\begin{theorem}[\textbf{Peano's Theorem}]
+    There exists a continuous surjection $\phi:[0,1]\to[0,1]\times[0,1]$.
+\end{theorem}
+
+\begin{theorem}
+    There exists a function $f:[0,1]\to[0,1]$ that has the intermediate value property and is discontinuous at every point.
+\end{theorem}
+
+\begin{definition}
+    A function is called convex if any segment with endpoints on its graph lies above the graph itself. Formally, if $D$ is an interval of the real axis, or more generally a convex subset of a vector space, then a function $f:D\to\R$ is called convex if
+    $$f(\lambda x+(1-\lambda)y)\leq \lambda f(x)+(1-\lambda)f(y),\,\,\,\text{for all}\,\,\,x,y\in D,\,\,\lambda\in(0,1).$$
+    A function $f$ is concave if $-f$ is convex. If $f$ is both convex and concave, the $f(x)=ax+b$ for some constants $a$ and $b$.
+\end{definition}
+\begin{proposition}
+    A twice-differentiable function on an iterval is convex if and only if its second derivative is nonnegative.
+\end{proposition}
+
+\begin{theorem}
+    If $x_1,x_2,\ldots,x_n, y_1,y_2,\ldots,y_n,p$ and $q$ are positive numbers with $\frac{1}{p}+\frac{1}{q}=1$, then
+    $$\sum_{i=1}^{n}{x_iy_i}\leq\left(\sum_{i=1}^{n}{x_i^p}\right)^{1/p}\left(\sum_{i=1}^{n}{y_i^q}\right)^{1/q},$$
+    with equality if and only if the two vectors $(x_1,x_2,\ldots,x_n)$ and $(y_1,y_2,\ldots,y_n)$ are parallel.
+\end{theorem}
+
+\begin{definition}
+    A sequence $(a_n)_{n\geq 0}$ is called convex if $$a_n\leq \frac{a_{n+1}+a_{n-1}}{2},\,\,\,\,\text{for all } n\geq 1,$$ and concave if $(-a_n)_n$ is convex.
+\end{definition}
+
+\begin{theorem}
+    For a convex function $f$ let $x_1,x_2,\ldots,x_n$ be points in its domain and let $\lambda_1,\lambda_2,\ldots,\lambda_n$ be positive numbers with $\lambda_1+\lambda_2+\cdots+\lambda_n=1$. Then
+    $$f(\lambda_1x_1+\lambda_2x_2+\cdots+\lambda_nx_n)\leq\lambda_1f(x_1)+\lambda_2f(x_2)+\cdots+\lambda_nf(x_n).$$
+    If $f$ is nowhere linear and the $x_i$'s are not all equal, then the inequality is strict. The inequality is reversed for a concave function.
+\end{theorem}
+
+\begin{theorem}[The Leibniz formula]
+    $$\frac{\pi}{4}=1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\cdots$$
+\end{theorem}
+
+\begin{theorem}
+    Let $f$ and $g$ be two increasing functions on $\R$. Then for any real numbers $a<b$,
+    $$(b-a)\int_{a}^{b}{f(x)g(x)dx}\geq\left(\int_{a}^{b}{f(x)dx}\right)\left(\int_{a}^{b}{g(x)dx}\right).$$
+\end{theorem}
+\end{document}
