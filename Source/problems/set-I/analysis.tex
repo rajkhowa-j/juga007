@@ -1,0 +1,258 @@
+\section{Questions}
+\subsection{Analysis}
+    \question Let $f$ be a continuous function on $[0,1]$ with real values.
+\begin{enumerate}
+    \item Suppose that $f$ is differentiable at a point $a\in [0, 1]$. Prove that there exists an integer $n\geq 1$ such that $|f(x)-f(a)|\leq n|x-a|$, for all $x\in [0, 1]$.
+    \item Let $E_n=\{f: f\in C([0, 1])$, for which there exists some $a\in [0, 1]$, depending on $f$, such that $|f(x)-f(a)|\leq n|x-a|$, for all $x\in [0, 1]$ $\}$. Prove that $E_n$ is closed and has no interior point in $C([0, 1])$ for topology defined by the uniform norm.
+    \item Derive from that the existence of a continuous function on $[0, 1]$ which is not differentiable at every point of $[0, 1]$.
+\end{enumerate}
+
+\begin{solution}
+    
+\end{solution}
+
+\question Suppose that $X$ is an uncountable subset of reals. Prove that there is a point of $X$ that is a limit of a sequence of distinct points of $X$.
+
+\begin{solution}
+    If not, then for each $x\in X$, there is an positive integer $n_x$ such that $B_{n_x}(x)=\phi$. Since $X$ is uncountable, there exists a positive integer $n$ with uncountably many points in $X$ such that $n_x=n$. Since $B_{n_x}(x)=\phi$, so ay two points of this set must be at distance at least $\frac{1}{n}$, so there are only countably many of them.
+\end{solution}
+
+\question Suppose that the complex function $f$ is holomorphic and bounded for $\mathcal{R}(z)>0$. Prove that it is uniformly continuous for $\mathcal{R}(z)>1$.
+
+\begin{solution}
+    We know that $$|f^{(n)}(z)|\leq\frac{{n!}M_R}{R^n},\,\,\, \forall \,\, B_R{(z_0)},$$ where $M_R=\max\{|f(z)|: |z-z_0|\leq R\}$.\\
+    Since $f$ is bounded on $\mathcal{R}(z)>0$, there exists $M>0$ such that $|f(z)|<M$ for all $\mathcal{R}(z)>0$. Now let $R<1$ be a fixed number. Then for any $z_0\in\C$ with $\mathcal{R}(z_0)>1$ we have $B_R(z_0)\subset\{z: \mathcal{R}(z)>0\}$. Thus
+    $$|f^{(1)}(z_0)|\leq\frac{M}{R}.$$ And hence $f$ is uniformly continuous on $\mathcal{R}(z)>1$.
+\end{solution}
+
+\question Let $f:\R\to\R$ such that $2f(x)=f(2x)$ for all $x\in\R$.
+\begin{enumerate}
+    \item Show that if $f$ is differentiable at 0 then $f$ is linear.
+    \item Give an example of such a function which is continuous but not linear.
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}
+        \item We have $f(x)=2f(\frac{x}{2})=4f(\frac{x}{4})=\cdots=2^nf\left(\frac{x}{2^n}\right)$ for all $x\in\R$, where $n\in\mathbb{N}$. Since $f$ is differentiable at 0, hence continuous at 0. Since $\frac{x}{2^n}\to0$ as $n\to\infty$, thus 
+        $$f(0)=\lim_{n\to\infty}{f\left(\frac{x}{2^n}\right)}=\lim_{n\to\infty}{\frac{f(x)}{2^n}}=0.$$
+        Again, $f$ is differentiable at 0 so $f'(0)=\lim_{h\to0}{\frac{f(h)-f(0)}{h}}=\lim_{h\to0}{\frac{f(h)}{h}}$. Let $x\in\R$ such that $x\neq0$, then $\frac{x}{2^n}\to0$ as $n\to\infty$. So
+        $$f'(0)=\lim_{n\to\infty}{\frac{f\left(\frac{x}{2^n}\right)}{\frac{x}{2^n}}}=\lim_{n\to\infty}{\frac{2^nf\left(\frac{x}{2^n}\right)}{x}}=\lim_{n\to\infty}{\frac{f(x)}{x}}=\frac{f(x)}{x}.$$
+        Thus $f(x)=f'(0)x$ for all $x\in\R$ i.e. $f$ is linear.
+        \item 
+    \end{enumerate}
+\end{solution}
+
+\question Suppose that the coefficient of the power series $\sum_{n=0}^{n}{a_nz^n}$ are given by the recurrence relation $$a_0=1,\,a_1=-1,\,3a_n+4a_{n-1}-a_{n-2}=0,\,\,n=2, 3, \ldots, $$
+Find the radius of convergence of the series and the function to which the power series converges in its disc of convergence.
+
+\begin{solution}
+    Let the seris converge to $f$ in its radius of convergence.
+    \begin{align*}
+        3f(z)+4zf(z)-z^2f(z)&=3\sum_{n=0}^{\infty}{a_nz^{n}}+4\sum_{n=0}^{\infty}{a_nz^{n+1}}-\sum_{n=0}^{\infty}{a_nz^{n+2}}\\
+        &=3a_0+3a_1z+3\sum_{n=2}^{\infty}{a_nz^{n}}+4a_0z+4\sum_{n=1}^{\infty}{a_nz^{n+1}}-\sum_{n=0}^{\infty}{a_nz^{n+2}}\\
+        &=3a_0+3a_1+3\sum_{n=2}^{\infty}{a_nz^{n}}+4a_0+4\sum_{n=2}^{\infty}{a_{n-1}z^n}-\sum_{n=2}^{\infty}{a_{n-2}z^n}\\
+        &=3a_0+3a_1z+4a_0z+3\sum_{n=2}^{\infty}{(a_n+4a_{n-1}-a_{n-2})z^{n}}\\
+        &=3-3z+4z\\
+        &=z+3
+    \end{align*}
+    Thus $f(z)=\frac{z+3}{3+4z-z^2}$. Now $f(z)$ has poles where $3+4z-z^2=0$ i.e., $z=2\pm\sqrt{7}$ so the radius of convergence is $\sqrt{7}-2$.
+\end{solution}
+
+\question Find all differentiable function $f:\R\to\R$ satisfying $$f'(x)=\frac{f(x+h)-f(x-h)}{2h}$$ for all $x\in\R$ and $h\neq0$.
+
+\begin{solution}
+    Given that $$f'(x)=\frac{f(x+h)-f(x-h)}{2h}.$$
+    Multiply both side by $2h$ and differentiate with respect to $h$ we get $$2f'(x)=f'(x+h)+f'(x-h).$$
+    Again differentiating this equation once more by $h$ gives $$f''(x+h)=f''(x-h),$$ for all $x\in\R$ and $h\neq0$. That is, $f''$ is constant and so $f(x)=ax^2+bx+c$ for some real constant $a,b$ and $c$.
+\end{solution}
+
+\question Suppose that $f:\C\to\C$ is holomorphic and $\Re{(f'')}$ is strictly positive for all $z\in\C$. What is the maximum possible number of solutions of $f(z)=az+b$, $a,b\in\mathbb{Z}$.
+
+\begin{solution}
+    Given that $f$ is entire which implies that $f''$ is also entire. Since $\Re{(f''(z))}$ is strictly positive for all $z\in\C$ and $f''$ is entire, so $f''$ is constant. Therefore $f(z)=sz^2+tz+r$ for some fixed $s,t,r\in\mathbb{Z}$. So $f(z)=az+b$ has at most two solutions for $a,b\in\mathbb{Z}$.
+\end{solution}
+
+\question Let $f:[0,1]\times[0,1]\to\R$ is a continuous function and define $g:[0,1]\to\R$ by
+$$g(x)=\min_{0\leq y\leq1}{f(x,y)}.$$
+Show that $g$ is continuous on $(0,1)$.
+\begin{solution}
+    Since $[0,1]\times[0,1]$ is compact, $f$ is uniformly continuous. Let $\epsilon>0$ be given. Then there exists $\delta>0$ such that $|f(x,y)-f(x_0,y_0)|<2\epsilon$ whenever $\|(x,y)-(x_0,y_0)\|_2<\delta$.\\
+    \textbf{Claim:} $|g(x)-g(x_0)|<\epsilon$ whenever $|x-x_0|<\delta$.\\
+    Let $|x-x_0|<\delta$. Then for any $y\in[0,1]$,
+    $$\|(x,y)-(x_0,y)\|_2=\sqrt{(x-x_0)^2+(y-y)^2}=|x-x_0|<\delta$$
+    so $|f(x,y)-f(x_0,y)|<\epsilon$. Then,
+    \begin{align*}
+        &f(x_0,y)-\epsilon<f(x,y)\,\,\,\,\forall y\in[0,1]\\
+        \implies &g(x_0)-\epsilon<f(x_0,y)-2\epsilon<f(x,y)\,\,\,\,\forall y\in[0,1]\\
+        \implies &g(x_0)-\epsilon<f(x_0,y)-2\epsilon\leq g(x)\\
+        \implies &g(x_0)-\epsilon< g(x)
+    \end{align*}
+    Similarly,
+    \begin{align*}
+        &f(x,y)-\epsilon<f(x_0,y)\,\,\,\,\forall y\in[0,1]\\
+        \implies &g(x)-\epsilon<f(x,y)-2\epsilon<f(x_0,y)\,\,\,\,\forall y\in[0,1]\\
+        \implies &g(x)-\epsilon<f(x,y)-2\epsilon\leq g(x_0)\\
+        \implies &g(x)-\epsilon< g(x_0)\\
+        \implies &g(x)< g(x_0)+\epsilon\\
+    \end{align*}
+    Therefore $|g(x)-g(x_0)|<\epsilon$. That is $g$ is uniformly continuous on $(0,1)$.
+\end{solution}
+
+\question Let $A$ be a subset of a compact metric space $(X, d)$. Assume that, for every continuous function $f:X\to\R$, the restriction of $f$ to $A$ attains its maximum on $A$. Show that $f$ is compact.
+\begin{solution}
+    Since $A$ is a subset of the compact metrix space $(X,d)$, so we only need to show that $A$ is closed. Let $p\in\overline{A}$ and consider a function $f:X\to\R$ define by $f(x)=-d(x,p)$. Clearly $f$ is continuous and non-positive. By assumption $f|A$ attains its maximum on $A$. Since $p\in\overline{A}$, maximum of $f|_A$ on $A$ is zero. Therefore $p\in A$ and hence $A$ is closed.
+\end{solution}
+
+\question[2B, Fall14] Prove or give counterexample: If a continuous real- valued function on the plane is bounded on all straight lines then it is bounded.
+\begin{solution}
+    Define $f:\R^2\to\R$ by
+    $$f((x,y))=\begin{cases}
+        x, & (x,y)\in B_1((x,x^2))\\
+        0, & \text{otherwise}
+    \end{cases}$$
+\end{solution}
+
+\question[3A, Sp16] Suppose that $f_n$ and $g$ are nonegative integrable function such that $\int{f_ndx}\to 0$ as $n\to\infty$ and ${f_n}^2\leq g$ for all $n$. Prove or find a counter example to the statement that $\int{{f_n}^4dx}\to 0$ as $n\to\infty$.
+\begin{solution}
+    Let $D=(0,1)$ and consider the sequence of function $f_n$ on $D$ given by
+    $$f_n(x)=\begin{cases}
+        n^{\frac{1}{4}}, & 0<x\leq\frac{1}{n}\\
+        0, & \frac{1}{n}<x<1
+    \end{cases}$$
+    and $g(x)=x^{-\frac{1}{2}}$ for all $x\in D$. Now
+    $$\int_{0}^{1}{f_n(x)dx}=\int_{0}^{\frac{1}{n}}{n^{\frac{1}{4}}}=n^{\frac{1}{4}}\frac{1}{n}=n^{-\frac{3}{4}}.$$
+    That is $\int{f_ndx}\to 0$ as $n\to\infty$. Again for all $n\in\mathbb{N}$,
+    $$g(x)-{f_n}^2(x)=\begin{cases}
+        x^{-\frac{1}{2}}-n^{\frac{1}{2}}, & 0<x\leq\frac{1}{n}\\
+        x^{-\frac{1}{2}}, & \frac{1}{n}<x<1
+    \end{cases}.$$
+    For $0<x\leq\frac{1}{n}$, $x^{-\frac{1}{2}}-n^{\frac{1}{2}}\geq 0$. Thus ${f_n}(x)^2\leq g(x)$ for all $n$ and all $x\in D$. But
+    $$\int_{0}^{1}{{f_n(x)}^4dx}=\int_{0}^{\frac{1}{n}}{n}=n\frac{1}{n}=1.$$
+\end{solution}
+
+\question Characterize all entire funcion $f(z)$ such that $\mathcal{R}({f(z)})$ tending to 0 as $n\to\infty$.
+\begin{solution}
+    Given that $\mathcal{R}({f(z)})$ tending to 0 as $n\to\infty$ thus $\mathcal{R}({f(z)})$ is bounded. Now Consider the function $g:\C\to\C$ drfinde by $g(z)=e^{f(z)}$. Then $|g(z)|=e^{\mathcal{R}({f(z)})}$. That is $g$ is bounded. Again since $g$ is entire, so $g$ must be constant. Therefore we have $f$ is constant.  
+\end{solution}
+
+\question Let $\{f_n\}$ be a sequence of continuous real valued functions defined on an interval $[0,1]$ and suppose that $f_n\to f$ uniformly on $[0,1]$. show that
+$$\lim_{n\to\infty}\int_{0}^{1-\frac{1}{n}}{f_n(x)dx}=\int_{0}^{1}{f(x)dx}$$
+
+\question[2B, Sp16] Let $(f_i)_{i=1}^{\infty}$ and $g$ be twice-differentiable real-valued functions on $\R$, with $f_{i}^{''}\geq 0$. Suppose that
+$$\lim_{i\to\infty}{f_i(x)}=g(x)$$
+forall $x\in\R$. Show that $g^{''}\geq0$.
+
+\begin{solution}
+    We have $$f^{''}_{i}(x)=\lim_{h\to0}{\frac{f_i(x+h)+f_i(x-h)-2f_i(x)}{h^2}}.$$
+    Since $f_{i}^{''}\geq 0$ for all $i$, so we have
+    $$f_i(x+h)+f_i(x-h)-2f_i(x)\geq 0$$
+    for all $x,h\in\R$. Now
+    \begin{align*}
+        g(x+h)+g(x-h)-2g(x)&=\lim_{i\to\infty}{f_i(x+h)}+\lim_{i\to\infty}{f_i(x-h)}-2\lim_{i\to\infty}{f_i(x)}\\
+        &=\lim_{i\to\infty}{f_i(x+h)+f_i(x-h)-2f_i(x)}\\
+        &\geq0.
+    \end{align*}
+    Therefore $g^{''}(x)\geq 0$ for all $x\in\R$.
+\end{solution}
+
+\question[3B, Sp16] Show that the series $$\sum_{k=1}^{\infty}{\frac{(-1)^k}{k+|x|}}$$ converges pointwise to a Lipschitz function $f(x)$. Is the convergence uniform on $\R$.
+\begin{solution}
+    For each fixed $x\in\R$, let $a_n=\frac{1}{k+|x|}$. Since $a_n$ is monotone sequence converge to therefore by Alternating Series Test, $\sum_{k=1}^{\infty}{\frac{(-1)^k}{k+|x|}}$ converges. Define for $x\in\R$, $f(x)=\sum_{k=1}^{\infty}{\frac{(-1)^k}{k+|x|}}$. Now we need to show that $f(x)$ is Lipschitz. Let $x,y\in\R$,
+    \begin{align*}
+        |f(x)-f(y)|&=\left|\sum_{k=1}^{\infty}{\frac{(-1)^k}{k+|x|}}-\sum_{k=1}^{\infty}{\frac{(-1)^k}{k+|y|}}\right|\\
+        &=\left|\sum_{k=1}^{\infty}{(-1)^k\left(\frac{1}{k+|x|}-\frac{1}{k+|y|}\right)}\right|\\
+        &=\left|\sum_{k=1}^{\infty}{(-1)^k\frac{y-x}{(k+|x|)(k+|y|)}}\right|\\
+        &\leq\sum_{k=1}^{\infty}{\frac{|x-y|}{k^2}}\\
+        &=\left(\sum_{k=1}^{\infty}{\frac{1}{k^2}}\right)|x-y|.
+    \end{align*}
+    Since the series $\sum_{k=1}^{\infty}{\frac{1}{k^2}}$ converges thus there exists an $M>0$ such that $\sum_{k=1}^{\infty}{\frac{1}{k^2}}<M$. Therefore
+    $$|f(x)-f(y)|\leq M|x-y|.$$
+    \textbf{Uniform Convergence:}\\
+    Let $\epsilon>0$ be given.
+    $$\left|\sum_{k=1}^{n}{\frac{(-1)^k}{k+|x|}}-\sum_{k=1}^{\infty}{\frac{(-1)^k}{k+|x|}}\right|=\left|\sum_{k=n+1}^{\infty}{\frac{(-1)^k}{k+|x|}}\right|$$
+\end{solution}
+
+\question[5B, Sp16] let $f(z)=\sum{f_nz^n}$ and $g(z)=\sum{g_nz^n}$ define holomorphic functions on a neighborhood of the closed unit disk $D=\{z: |z|\leq1\}$. Prove that $h(z)=\sum{f_ng_nz^n}$ also defines a holomorphic function on a neighborhood of $D$.
+
+\question[5A, Fall16] Is there a function $f(z)$ analytic on $\C\setminus\{0\}$ such that $|f(z)|\geq\frac{1}{\sqrt{|z|}}$ for all $z\neq0$.
+
+\question[2B, Fall16] Let $K$ be a compact subset of $\R^n$ and $f(x)=d(x,K)$ be the Euclidean distance from $x$ to the nearest point of $K$.
+\begin{enumerate}
+    \item Show that $f$ is continuous and $f(x)=0$ if $x\in K$.
+    \item Let $g(x)=\max(1-f(x),0)$. Show that $\int{g^m}$ converges to the $n$-dimensional volume of $K$ as $m\to\infty$
+\end{enumerate}
+$\mathbf{*}$ The $n$-dimensional volume of $K$ is defined as $\int{1_K}$ if the integral exists, where
+$$1_K(x)=\begin{cases}
+    1, & x\in K\\
+    0, & x\notin K
+\end{cases}$$
+
+\question Does there exists a sequence $\{p_n\}$ of polynmials such that $p_n$ converge to $\frac{1}{z}$ uniformly on $\{z\in\C : |z|=1\}$ ?
+
+\question Does there exists an analytic function $f:\mathbb{D}\to\C$ such that $f\left(\frac{1}{n}\right)=\frac{(-1)^n}{n}$ for all $n\in\N\setminus\{1\}$ ?
+\begin{solution}
+    Consider the set $S=\{\frac{1}{2k+1}: k\in\N\}$. For $k\in\N$, $$f\left(\frac{1}{2k+1}\right)=\frac{(-1)^{2k+1}}{2k+1}=\frac{-1}{2k+1}.$$ Also $S$ has an limit point. Now if $f$ is analytic then $f(z)=-z$ for all $z\in\mathbb{D}$ but $f\left(\frac{1}{2}\right)=\frac{1}{2}$.
+\end{solution}
+
+\question let $f$ be a continuous function on $[0,1]$. Evaluate the following integral:
+$$\lim_{n\to\infty}{n\int_{0}^{1}{x^nf(x)dx}}.$$
+\begin{solution}
+    \begin{align*}
+        n\int_{0}^{1}{x^nf(x)dx}=&n\int_{0}^{1}{x^n(f(x)-f(1))dx}+n\int_{0}^{1}{x^nf(1)dx}\\
+        &=n\int_{0}^{1}{x^n(f(x)-f(1))dx}+\frac{n}{n+1}f(1)
+        \end{align*}
+        
+        Let $\epsilon>0$, since $f$ is continuous at $1$, there exists $\delta>0$ such that $|f(x)-f(1)|<\frac{\epsilon}{2}$ for all $x\in[1-\delta,1]$. We have,
+
+        $$\left|n\int_{0}^{1}{x^n(f(x)-f(1))dx}\right|\leq\left|n\int_{0}^{1-\delta}{x^n(f(x)-f(1))dx}\right|+\left|n\int_{1-\delta}^{1}{x^n(f(x)-f(1))dx}\right|.$$
+        
+        Let $L=\displaystyle\sup_{x\in[0,1]}{|f(x)-f(1)|}$ then, 
+        
+        \begin{align*}
+        \left|n\int_{1-\delta}^{1}{x^n(f(x)-f(1))dx}\right|&\leq n\int_{1-\delta}^{1}{x^n|f(x)-f(1)|dx}\\
+        &\leq n\int_{1-\delta}^{1}{x^n\frac{\epsilon}{2}dx}\\
+        &\leq \frac{\epsilon}{2}\frac{n}{n+1}\\
+        &\leq \frac{\epsilon}{2}
+        \end{align*}
+        
+        and
+        
+        \begin{align*}
+        \left|n\int_{0}^{1-\delta}{x^n(f(x)-f(1))dx}\right|&\leq n\int_{0}^{1-\delta}{x^n|f(x)-f(1)|dx}\\
+        &\leq n\int_{0}^{1-\delta}{x^nLdx}\\
+        &=nL\frac{(1-\delta)^{n+1}}{n+1}
+        \end{align*}
+        
+        Therefore,
+        $$\left|n\int_{0}^{1}{x^n(f(x)-f(1))dx}\right|\leq \frac{\epsilon}{2}+nL\frac{(1-\delta)^{n+1}}{n+1}.$$
+        
+        Since $\epsilon>0$ is arbitrary as a result we get,
+        $$\left|n\int_{0}^{1}{x^n(f(x)-f(1))dx}\right|\leq nL\frac{(1-\delta)^{n+1}}{n+1}.$$
+        
+        Since $\frac{(1-\delta)^{n+1}}{n+1}\to 0$ as $n\to\infty$, and $L$ is fixed hence we get,
+        
+        $$\lim_{n\to\infty}{n\int_{0}^{1}{x^n(f(x)-f(1))dx}}=0.$$
+        
+        Thus,
+        
+        \begin{align*}
+        \lim_{n\to\infty}{n\int_{0}^{1}{x^nf(x)dx}}&=\lim_{n\to\infty}{n\int_{0}^{1}{x^n(f(x)-f(1))dx}}+\lim_{n\to\infty}{\frac{n}{n+1}f(1)}\\
+        &=0+\lim_{n\to\infty}{\frac{n}{n+1}f(1)}\\
+        &=f(1).
+        \end{align*}
+\end{solution}
+
+\question Using Baire's Category Theorem prove that $\R$ is uncountable.
+\begin{solution}
+    Let $\R=\{x_1, x_2, \ldots\}$. Then each of the sets $G_n=\R\setminus\{x_n\}$ is open and dense. So by Baire's Category Theorem, $\displaystyle\bigcap_{n=1}^{\infty}{G_n}\neq\phi$. Which is a contradiction as the intersection is empty.
+\end{solution}
+
+\question Show that dense $G_{\delta}$ subsets of $\R$ must be uncountable.
+
+\begin{solution}
+    Let $G=\{x_1, x_2, \ldots\}$ be a dense $G_{\delta}$ subset of $\R$. Let $(G_n)$ be a sequence of open sets in $\R$ such that $G=\displaystyle\bigcap_{n=1}^{\infty}{G_n}$. Since $G$ is dense, each $G_n$ is dense. Then thet sets $\tilde{G_n}=G_n\setminus\{x_n\}$ are still open and dense, but $G=\displaystyle\bigcap_{n=1}^{\infty}{\tilde{G_n}}=\phi$, contrary to Baire's Category Theorem.
+\end{solution}
+
+\question Prove that $\Q$ cannot be written as the countable intersection of open subsets of $\R$.
+\begin{solution}
+    Then $\Q$ is a $G_{\delta}$ set which is dense. Thus by above $\Q$ must be uncountable, which is a contradiction.
+\end{solution}

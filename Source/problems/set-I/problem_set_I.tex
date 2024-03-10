@@ -1,0 +1,50 @@
+\documentclass[answers, a4paper, 12pt]{exam}
+\usepackage{amsmath,amssymb,amsfonts,amscd,ragged2e}
+\usepackage{multicol,fancybox,tabularx,textcomp,tabulary,pbox,ifthen,hyperref,etoolbox,color,sectsty}
+\usepackage{mVersion}
+\usepackage[dvipsnames]{xcolor}
+\sectionfont{\color{red}}
+\subsectionfont{\color{cyan}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}{Definition}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Aut}{Aut}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\pagestyle{headandfoot}
+\firstpagefooter{}{}{\tiny Page \thepage\ of \numpages\normalsize}
+\runningfooter{}{}{\tiny Page \thepage\ of \numpages\normalsize}
+\extrawidth{.65in}
+\extraheadheight{-0.25in}
+\extrafootheight{-0.40in}
+%\shadedsolutions
+\renewcommand{\solutiontitle}{\noindent\textbf{\color{red} Solution:}\par\noindent}
+\printanswers
+\pointformat{[\themarginpoints]}
+\begin{document}
+\thispagestyle{empty}
+\tableofcontents
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\newpage
+\begin{questions}
+    \include{analysis}
+    \include{linear}
+    \include{algebra}
+    \include{forexams}
+    \include{newsets}
+\end{questions}
+\end{document}

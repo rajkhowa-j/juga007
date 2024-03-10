@@ -1,0 +1,227 @@
+\subsection{Linear Algebra}
+    \question Let $f$ be a linear functional on $M_n$. Then the following are equivalent.
+\begin{enumerate}
+    \item $f=\alpha\tr$. where $\alpha$ is some complex number and where $\tr$ denotes the trace,
+    \item $f(ab-ba)=0$ for all $a,b\in M_n$,
+    \item $f(xax^{-1})=f(a)$, for all $a\in M_n$ and $x$ invertible in $M_n$,
+    \item $|f(x)|\leq C\rho(x)$, where $C$ is some positive constant and where $\rho$ denotes the spectral radius.
+\end{enumerate}
+
+\begin{solution}
+    $(a)\implies(b):$ Assume that $f=\alpha\tr$. Then for any $a,b\in M_n$, $$f(ab-ba)=\alpha\tr(ab-ba)=0.$$
+    $(b)\implies(c):$ Assume that $f(ab-ba)=0$ for all $a,b\in M_n$. Then for any $a,b\in M_n$, we have $f(ab)=f(ba)$. Let $a\in M_n$ and $x$ is an invertible matrix in $M_n$. Then $$f(xax^{-1})=f(x^{-1}xa)=f(a).$$
+    $(c)\implies(a):$
+\end{solution}
+
+\question Let $A$ be an $n\times n$ complex matrix, all of whose eigenvalues are 1. Suppose that the set $\{A^k : k = 1, 2, \ldots\}$ is bounded. Show that $A$ is the idenity matrix.
+
+\begin{solution}
+    Observe that if $\{A^k : k = 1, 2, \ldots\}$ is bounded then $\{U^{-1}A^kU : k = 1, 2, \ldots\}$ is also bounded for some invertible matrix $U\in M_n$. Since eigenvalues of $A$ are all 1, so there exists an invertible matrix $S\in M_n$ such that $S^{-1}AS=J=J_{n_1}(1)\oplus J_{n_2}(1)\oplus\cdots\oplus J_{n_d}(1)$ where $n_1+n_2+\cdots n_d=n$. From given condition we have $\{J^k : k = 1, 2, \ldots\}$ is bounded and since $J^k=J_{n_1}^k(1)\oplus J_{n_2}^k(1)\oplus\cdots\oplus J_{n_d}^k(1)$ so we have $n_t=1$ for all $t=1, 2, \ldots, d$. Therefore $A$ is the identity matrix.
+\end{solution}
+
+\question Let $T$ be a $n\times n$ complex matrix. Show that $$\lim_{k\to\infty}{T^k}=0$$ if and only if all the eigenvalues of $T$ has absolute value less than 1.
+
+\begin{solution}
+    Asssume that $\displaystyle\lim_{k\to\infty}{T^k}=0$. Let $x\neq 0$ such that $Ax=\lambda x$, then $A^kx=\lambda^k x$. Thus we have $\displaystyle\lim_{k\to\infty}{\lambda^kx}=0$ which implies that $|\lambda|<1$.\\
+    Conversely, let all the eigenvalues of $T$ has absolute value less than 1 then $\rho(T)<1$. Thus there is a matrix norm $\|\cdot\|$ such that $\|T\|<1$. Therefore $\displaystyle\lim_{k\to\infty}{T^k}=0$ as $\|T^k\|\leq\|T\|^k$.
+\end{solution}
+
+\question Show that $A, B\in M_n$ have the same characteristic polynomial, and hence the same eigenvalues, if and only if $\tr{A^k}=\tr{B^k}$ for all $k=1, 2, \ldots, n$. Deduce that $A$ is nilpotent if and only if $\tr{A^k}=0$ for all for all $k=1, 2, \ldots, n$.
+
+\begin{solution}
+    Let $\lambda_1, \ldots, \lambda_n$ and $\mu_1, \ldots, \mu_n$ are eigenvalues of $A$ and $B$, respectively. Given that $\tr{A^k}=\tr{B^k}$ for all $k=1, 2, \ldots, n$. So for all $k=1, 2, \ldots, n$ we have
+    \begin{equation}\label{eq7.0}
+        \sum_{i=1}^{n}{{\lambda_i}^k}=\sum_{i=1}^{n}{{\mu_i}^k}.
+    \end{equation}
+    For $k=1$, we get 
+    \begin{equation}\label{eq7.1}
+        \lambda_1+\cdots+\lambda_n=\mu_1+\cdots+\mu_n,
+    \end{equation}
+    that is $S_1(A)=S_1(B)$. Squaring both side of the equation \ref{eq7.1} we get 
+    \begin{align*}
+        \sum_{i=1}^{n}{{\lambda_i}^2}+2(\lambda_1\lambda_2+\cdots+\lambda_n\lambda_1)&=\sum_{i=1}^{n}{{\mu_i}^2}+2(\mu_1\mu_2+\cdots+\mu_n\mu_1)\\
+        \text{or}\,\,(\lambda_1\lambda_2+\cdots+\lambda_n\lambda_1)&=(\mu_1\mu_2+\cdots+\mu_n\mu_1)
+    \end{align*}
+    i.e., $S_2(A)=S_2(B)$. Using the same technique we can show that $S_k(A)=S_k(B)$ for all $k=1, 2, \ldots, n$. Thus $p_A(t)=p_B(t)$ and hence $A$ and $B$ have the same eigenvalues. For the next part take $B$ as the zero matrix.
+\end{solution}
+
+\question Let $A$ be a $r\times r$ matrix of real numbers. Prove that the infinite sum $$e^A=\sum_{n=0}^{\infty}{\frac{A^n}{n!}}$$ of matrices converges.
+
+\begin{solution}
+    Since the complex function $e^z$ entire so the series $\sum_{n=0}^{\infty}{\frac{z^n}{n!}}$ converges for all $z\in\C$ and hence radius of convergence of this series is infinite. Now for any matrix $A\in M_n$, $\rho(A)<\infty$, so, the series $e^A=\sum_{n=0}^{\infty}{\frac{A^n}{n!}}$ converges for all $A\in M_n$.
+\end{solution}
+
+\question Show that $\det{(\exp{M})}=e^{\tr{M}}$ for any complex $n\times n$ matrix $M$.
+
+\begin{solution}
+    Eigenvalues of $\exp{M}$ is of the form $e^{\lambda}$, where $\lambda$ is an eigenvalue of $A$. Now let $\lambda_1, \ldots, \lambda_n$ are eigenvalues of $M$. Then 
+    $$\det{(\exp{M})}=e^{\lambda_1}\cdots e^{\lambda_n}=e^{\lambda_1+\cdots+\lambda_n}=e^{\tr{M}}.$$
+\end{solution}
+
+\question Let $A$ and $B$ be $n\times n$ complex matrix. Show that $$|\tr{(AB^*)}|^2\leq\tr{(AA^*)}\tr{(BB^*)}.$$
+
+\begin{solution}
+    Let $A$ and $B$ be $n\times n$ complex matrix. The $ij$-th element of $AB^*$ is given by $\sum_{j=1}^{n}{a_{ij}\overline{b}_{ij}}$. Thus $\tr{(AB^*)}=\sum_{i=1}^{n}{\left(\sum_{j=1}^{n}{a_{ij}\overline{b}_{ij}}\right)}=\sum_{i,j=1}^{n}{a_{ij}\overline{b}_{ij}}$. Now
+    $$|\tr{(AB^*)}|^2=\left|\sum_{i,j=1}^{n}{a_{ij}\overline{b}_{ij}}\right|^2\leq \sum_{i,j=1}^{n}{a_{ij}\overline{a}_{ij}}\sum_{i,j=1}^{n}{b_{ij}\overline{b}_{ij}}=\tr{(AA^*)}\tr{(BB^*)}.$$
+\end{solution}
+
+\question Let $x,y\in\R^n$ such that $\|x\|_2=\|y\|_2$. Construct a orthogonal matrix $Q$ such that $Qx=y$. Can there be such matrix if $\|x\|_2\neq\|y\|_2$.
+\begin{solution}
+    
+\end{solution}
+
+\question Prove that if $A$ is an $2\times 2$ integer valued matrix such that $A^n=I$ for some strictly positive integer $n$, then $A^{12}=I$.
+
+\begin{solution}
+    
+\end{solution}
+
+\question Let $A$ be a linear transformation on an $n$ dimensional vector space over $\C$ with characteristic polynomial $(x-1)^n$. Show that $A$ is similar to $A^{-1}$.
+
+\begin{solution}
+    
+\end{solution}
+
+\question Prove or disprove: A square matrix $A$ is similar to its transpose $A^t$.
+
+\begin{solution}
+    
+\end{solution}
+
+\question Let $A,B\in M_n$ such that $A=AB-BA$. Show that $A$ is nilpotent.
+
+\begin{solution}
+    For any positive integer $k$, $tr(A^{k+1})=\tr(A^kA)=\tr(A^k(AB-BA))=\tr(A^{k+1}B-A^kBA)$. Take $A^kB=T$ then $tr(A^{k+1})=\tr(AT-TA)=0$. Also $\tr(A)=\tr(AB-BA)=0$. That is, $\tr(A^k)=0$ for each positive integer $k$, hence $A$ is nilpotent.
+\end{solution}
+
+\question Let $A,B\in M_n$ such that $AB+A=BA+B$. Show that $A-B$ is nilpotent.
+\begin{solution}
+    Given that $A-B=BA-AB$. We get $B(A-B)-(A-B)B=BA-AB=A-B$. Thus $A-B$ is nilpotent.
+\end{solution}
+
+\question Let $A\in M_n$ be positive semidefinite. Prove that there exist a lower triangular matrix $L$ with non-negative diagonal entries such that $A=LL^*$.
+
+\begin{solution}
+    Since $A$ is positive semidefinite, there exist a $n\times n$ Hermitian matrix $B$ such that $B^2=A$. Let $B=QR$ be the QR-factorization where $Q$ is unitary and $R$ is upper triangular with non-negative diagonal entries. Let $L=R^*$, then 
+    $$A=BB=B^*B=R^*Q^*QR=R^*R=LL^*.$$
+\end{solution}
+
+\question Let $A\in M_n$ be positive semidefinite. Prove that $$\det{A}\leq\prod_{i=1}^{n}{a_{ii}}.$$
+
+\begin{solution}
+    Since $A$ is positive semidefinite, there is a lower triangular matrix $L$ with non-negative diagonal entries $c_{11}, \ldots, c_{nn}$ such that $A=LL^*$. Now $\det(A)=\det(LL^*)=\det(L)\det(L^*)$. But $\det(L)=\det(L^*)=c_{11}\cdots c_{nn}$, $det(A)=c^2_{11}\cdots c^2_{nn}$. Now for $i\in\{1,\ldots, n\}$,
+    $$a_{ii}=\sum_{j=1}^{n}{c_{ij}\overline{c}_{ij}}=\sum_{j=1}^{n}{|c_{ij}|^2}\geq c^2_{ii}.$$
+    Therefore,
+    $$\det{A}=c^2_{11}\cdots c^2_{nn}\leq\prod_{i=1}^{n}{a_{ii}}.$$
+\end{solution}
+
+\question Suppose that the square complex matrix $A$ is similar to $A^n$ for $n\geq 1$. Prove all eigenvalues of $A$ are either 0 or roots of unity.
+
+\begin{solution}
+    Let $\lambda$ be an eigenvalue of $A$. Then $\lambda^n$ is an eigenvalue of $A^n$. Since $A$ is similar to $A^n$, so $\lambda^n$ is also an eigenvalue of $A$. So we can conclude that each element of the sequence $\lambda, \lambda^n, \lambda_{2n}, \ldots $ is an eigenvalue of $A$. But since eigenvalues of $A$ are finite, so $\lambda$ satisfies the equation $x^{n_i}=x^{n_j}$ for some distinct $i,j$. Thuse $\lambda$ is either 0 or a roots of unity.
+\end{solution}
+\question If two real matrix are similar by conjugation via a complex matrix then they are similar by conjugation via a real matrix.
+
+\begin{solution}
+    Let $A,B\in M_n(\R)$ and $S=C+iD\in M_n(\C)$ be nonsingular such that $A=SBS^{-1}$ or $AS=SB$. Since $C+iD$ is nonsingular, there exist $\tau\in\R$ such that $C+\tau D$ is nonsingular. Now,
+    $$AS=SB\implies A(C+iD)=(C+iD)B\implies AC+iAD=CB+iDB.$$
+    Therefore $AC=CD$ and $AD=DB$. Consequently, $AC=CD$ and $A\tau D=\tau DB$, so $A(C+\tau D)=(C+\tau D)B$ or $A=(C+\tau D)B(C+\tau D)^{-1}$.
+\end{solution}
+\question Given an example of two square complex matrices that have the same minimal polynomial and the same characteristic polynomial but are not similar.
+
+\begin{solution}
+    Consider the matrices $A=J_2(0)\oplus J_2(0)$ and $B=J_2(0)\oplus J_1(0)\oplus J_1(0)$.
+\end{solution}
+
+\question If $A\in M_n$ has distinct eigenvalues $\alpha_1, \ldots, \alpha_n$ and commutes with a given matrix $B\in M_n$, show that $B$ is diagonalizable and there is a polynomial $p(t)$ of degree at most $n-1$ such that $B=p(A)$.
+
+\begin{solution}
+    Let $S\in M_n$ be invertible such that $A=SDS^{-1}$, where $D=\text{diag}(\alpha_1, \ldots, \alpha_n)$. Let $T=S^{-1}BS$. Now 
+    $$AB=BA \implies SDS^{-1}STS^{-1}=STS^{-1}SDS^{-1} \implies SDTS^{-1}=STDS^{-1}.$$
+    Which implies that $DT=TD$. Since $D$ is diagonal, $T$ must be diagonal. And since $B=STS^{-1}$, we have $B$ is diagonalizable.  
+
+    Let $\beta_1, \ldots, \beta_n$ be the eigenvalues of $B$. For $i=1, \ldots, n$, consider the lagrange interpolation polynomial $L_i(x)=\displaystyle\prod_{j\neq i}\frac{x-\alpha_j}{\alpha_i-\alpha_j}$ and let $p(t)=\displaystyle\sum_{i=1}^{n}{\beta_i L_i(x)}$. Now
+
+    \begin{align*}
+        p(A)=&\sum_{i=1}^{n}{\beta_i\prod_{j\neq i}\frac{A-\alpha_jI}{\alpha_i-\alpha_j}}\\
+        =&\sum_{i=1}^{n}{\beta_i\prod_{j\neq i}\frac{SDS^{-1}-\alpha_jI}{\alpha_i-\alpha_j}}\\
+        =&\sum_{i=1}^{n}{\beta_i\left(\prod_{j\neq i}\frac{S(D-\alpha_jI)S^{-1}}{\alpha_i-\alpha_j}\right)}\\
+        =&S\sum_{i=1}^{n}{\beta_i\left(\prod_{j\neq i}\frac{(D-\alpha_jI)}{\alpha_i-\alpha_j}\right)}S^{-1}\\
+    \end{align*} 
+
+    Note that $\prod_{j\neq i}{\frac{(D-\alpha_jI)}{\alpha_i-\alpha_j}}$ is an $n\times n$ matrix where only the $i$th position on the main diagonal is 1 and all other entries are zero. Thus we get $\sum_{i=1}^{n}{\beta_i\left(\prod_{j\neq i}\frac{(D-\alpha_jI)}{\alpha_i-\alpha_j}\right)}=T$. Hence $p(A)=STS^{-1}=B$.
+\end{solution}
+
+\question Let $\mathcal{F}\subset M_n$ be a commuting family. Then some nonzero vector in $\C^n$ is an eigenvector of every $A\in\mathcal{F}$.
+
+\question Let $A\in M_n$ and $B\in M_n$ be Hermitian. Show that $A\oplus B$ is positive semi definite if and only if $A$ and $B$ are positive semidefinite. What can you say in the positive definite case?
+
+\question Let $A$ and $B$ be $n\times n$ matrix over a field $\mathbb{F}$ such that $A^2=A$ and $B^2=B$. Assume that $A$ and $B$ have the same rank. Prove that $A$ and $B$ are similar.
+
+\begin{solution}
+    The polynomial $x^2-x$ is an annihilating polynomial for both $A$ and $B$. Since the minimal polynomial divide the annihilating polynomial, so minimal polynomial of both $A$ and $B$ are a product of distinct linear factors and so $A$ and $B$ are diagonalizable. Since rank of $A$ and $B$ are same so number of nonzero eigenvalues of $A$ and $B$ are same. Thus there exists invertible matrices $U$ and $V$ such that $UAU^{-1}=I_k\otimes 0_{n-k}=VBV^{-1}$. Which implies that $A=(U^{-1}V)B(U^{-1}V)^{-1}$.
+\end{solution}
+
+\question If $A$ is an $m\times m$ matrix such that $A^n=I$ for some strictly positive integer $n$, then $A$ is diagonalizable.
+
+\begin{solution}
+    Mininal polynomial of $A$ divide $x^n-1$. Since $$x^n-1=\prod_{k=1}^{n}{\left(x-e^{\frac{2\pi ik}{n}}\right)},$$
+    $x^n-1$ has distinct roots and hence all the roots of the minimal polynomial of $A$ are distinct. Thus $A$ is diagonalizable.
+\end{solution}
+
+\question[6A, Sp16] Prove of disprove: there exist an $\epsilon>0$ and a real matrix $A$ such that $$A^{100}=\begin{pmatrix}
+    -1 & 0\\
+    0 & -1-\epsilon
+\end{pmatrix}$$
+\begin{solution}
+    Let $a,b$ are eigenvalues of $A$, then $a^{100}$ and $b^{100}$ are eigenvalues of $A^{100}$. WLOG, assume that $a^{100}=-1$ and $b^{100}=-1-\epsilon$. From $a^{100}=-1$ we have $a$ is complex. Again $A$ is real, so its characteristic polynomial is real and of degree 2 so we must have $a=\overline{b}$. Thus $|a^{100}|=|b^{100}|$ which is not possible as $|a^{100}|=1$ and $|b^{100}|=(1+\epsilon)^{100}\neq 1$.
+\end{solution}
+
+\question Prove or disprove: Let $A$ be an $n\times n$ matrix and if $m(x)$ is the minimal polynomial of $A$ then the minimal polynomial of $p(A)$ is $m(p(A))$ for any polynomial $p(x)$.
+\begin{solution}
+    False. Take $A$ be the zero matrix then the minimal polynomial $m(x)$ will be zero. Now take $p(x)=x+1$ then $p(A)$ is the identity matrix whose minimal polynomial is $m_1(x)=x-1$ but $m(p(x))=0$.
+\end{solution}
+
+\question[7A, Sp16] Suppose $A$ is a symmetric matrix with rational entries and $A=UDU^{t}$ , where $U$ is orthogonal. Must $D$ have rational entries? Prove or find a counterexample.
+
+\begin{solution}
+    since $U$ is orthigonal and $D$ is diagonal so $UDU^{t}$ diagonalize $A$ so entries of $D$ are the eigenvalues of $A$. So $D$ may not have rationals entries. Take
+    $$A=\begin{pmatrix}
+        1&1\\
+        1&-1
+    \end{pmatrix}$$
+\end{solution}
+
+\question[6B, Sp16] Let $A$ be an $m\times n$ real matrix and $y\in\R^m$. Let $x\in\R^n$ be a vector with nonnegative entries that minimizes the Euclidean distance $\|y-Ax\|$ (among all nonnegative vectors $x$). Show that the vector $v=A^T(y-Ax)$ has nonnegative entries.
+
+\question[7B, Sp16] Let $A$ be a real square matrix and let $\rho$ be the maximum of the absolute values of its eigenvalues (i.e., its spectral radius).
+\begin{enumerate}
+    \item Show that if $A$ is symmetric then $\|Ax\|\leq\rho\|x\|$ for all $x\in\R^n$, where $\|\cdot\|$ denotes the Euclidean norm.
+    \item Is this true when $A$ is not symmetric? Prove or give a counterexample.
+\end{enumerate}
+
+\question[7A, Fall16] Prove that $A$ and $B$ are similar over $\Q$ if and only if they are similar over $\C$.
+
+\question $A$ is an $n\times n$ matrix. Then $A$ is positive semidefinite( definitie) if and only if $A$ is Hermitian and all principal minors of $A$ are nonnegative( positive).
+
+\begin{solution}
+    \justifying Let $A$ is positive semidefinite( definitie) then clearly $A$ is Hermitian. By interlacing property of eigenvalues, we can say that all principal minors of $A$ are nonnegative( positive).\\
+    Assume that $A$ is Hermitian and all principal minors of $A$ are nonnegative. We use induction on the size of $A$. For $n=1$ we are done. Assume that the result is true for $n-1$. Let
+    $$A=\begin{bmatrix}
+        \tilde{A} & x \\
+        x^* & a_{nn}
+    \end{bmatrix}$$
+    and $A$ is Hermitian and all principal minors of $A$ are nonnegative. By assumption $\tilde{A}$ is positive semidefinite. 
+\end{solution}
+
+\question Let $A\in M_n(\C)$, $n\geq 2$. Show that the following two statements are equivalent.
+\begin{enumerate}
+    \item Every matrix that commutes with $A$ is a polynomial in $A$.
+    \item The characteristic polynomial and minimal plynomial of $A$ coinsides.
+\end{enumerate}
+
+\question Let $E$ be a complex $n$ dimensional vector space and let $L(E,E)$ denote the set of all linear and bounded operators $A:E\to E$. Prove the set
+$$
+    \{A\in L(E,E):\text{$A$ has $n$ distinct engenvalues}\}
+$$
+is open and dense in $L(E,E)$.
