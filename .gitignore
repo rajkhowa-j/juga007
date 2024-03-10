@@ -6,4 +6,5 @@
 *.toc
 *.dat
 *.synctex.gz
+.ipynb_checkpoints/
 temp/
