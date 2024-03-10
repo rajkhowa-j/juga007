@@ -1,0 +1,232 @@
+\section{New}
+
+\begin{example}
+    Prove that there is no polynomial $$P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0$$ with integer coefficients and of degree at least 1 with the property that $P(0), P(1), P(2), \ldots$ are all prime numbers.
+\end{example}
+\begin{solution}
+    Assume the contrary and that $P(0)=p$, $p$ is prime. Then $a_0=p$ and $P(kp)$ is divisible by $p$ for all $k\geq 1$. By assumption we have $P(kp)=p$ for all $k\geq 1$. Therefore, $P(x)$ takes the same value infinitely many times, a contradiction.
+\end{solution}
+
+\begin{example}
+    Let $F=\{E_1, E_2, \ldots, E_s\}$ be a family of subsets with $r$ elements of some set $X$. Show that if the intersection of any $r+1$ (not necessarily distinct) sets in $F$ is nonempty, then the intersection of all sets in $F$ is nonempty.
+\end{example}
+\begin{solution}
+    Assume the contrary that the intersection of all sets in $F$ is empty. Let $E_1=\{x_1, x_2, \ldots x_r\}$. Since none of $x_i$ in $E$ lines in the intersection of all the $E_j'$s, for each $x_i$ there exists $E_{ji}$ such that $x\notin E_{ji}$. Then
+    $$E_1\cap E_{j1}\cap E_{j2}\cap \cdots\cap E_{jr}=\phi,$$
+    which is a contradiction.
+\end{solution}
+
+\question If the prime divisors of elements in a set $M$ are among the prime numbers $p_1,p_2,\ldots p_n$ and $M$ has at least $3\cdot 2^n+1$ elements, then it contains a subset of four distinct elements whose product is a fourth power.
+
+\begin{solution}
+    For any $m\in M$ the prime factorization of $m$ is $p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_n^{\alpha_n}$. Now to each element $m$ of $M$ associate an $n-$tuple $(x_1,x_2,\ldots,x_n)$, where $x_i$ is 0 if $\alpha_i$ is even, and 1 if  $\alpha_i$ is odd. These $n-$tuples are the ``objects". The ``boxes" are $2^n$ possible choices of $0'$s and $1'$s. Hence by Pigeonhole Principle, every subset of $2^n+1$ elements of $M$ contains two distinct elements with same associated $n-$tuple, and therefore the product of these two elements is a square. We can repeatedly take aside such pairs and replace them with two of the remaining numbers. From the set $M$, which has at least $3\cdot 2^n+1$ elements, we can select $2^n+1$ such pairs or more. Consider the $2n+1$ numbers that are products of the two elements
+    of each pair. The argument can be repeated for their square roots, giving four elements
+    $a, b, c, d$ in $M$ such that $\sqrt{ab}\sqrt{cd}$ is a perfect square. Then $abcd$ is a fourth power.
+\end{solution}
+
+\question Let $A$ and $B$ be $2\times 2$ matrices with real entries satisfying $(AB-BA)^n=I_2$ for some positive integer $n$. Prove that $n$ is even and $(AB-BA)^4=I_2$.
+
+\begin{solution}
+    Since $AB-BA$ has trace 0 so we have $$AB-BA=\begin{pmatrix}a&b\\c&-a\end{pmatrix}$$ for some $a,b,c\in\R$. Then $(AB-BA)^2=kI$ where $k=a^2+bc$. Now if $n=2k+1$ is odd then $(AB-BA)^n=I$ implies that
+    $$k^n\begin{pmatrix}a&b\\c&-a\end{pmatrix}=I,$$
+    which is a contradiction, hence $n$ must be even.\\
+    Again since $(AB-BA)^n=I$, $k$ is a root of unity which is also real so $k$ must be $\pm 1$. Therefore $(AB-BA)^4=k^2I=I$.
+\end{solution}
+
+\question Let $A,B\in M_3(\R)$ such that $\det{A}=\det{B}=\det{(A+B)}=\det{(A-B)}=0$. Show that $\det{(xA+yB)}=0$ for all real numbers $x,y$.
+
+\begin{solution}
+    Expand the determinant as $$\det{(xA+yB)}=a_0(x)y^3+a_1(x)y^2+a_2(x)y+a_3(x),$$
+    where $a_i(x)$ is a polynomial in $x$ of degree at most $i$, $i=0,1,2,3$. For $y=0$, $\det{(xA)}=x^3\det{A}=0$ i.e., $a_3(x)=0$. For $x=y$, $$\det{(xA+yB)}=\det{(xA+xB)}=x^3\det{(A+B)}=0.$$
+    Therefore
+    \begin{equation}\label{100_1}
+        a_0(x)x^3+a_1(x)x^2+a_2(x)x=0
+    \end{equation}
+    Similarly for $x=-y$, $$\det{(xA+yB)}=\det{(xA-xB)}=x^3\det{(A-B)}=0.$$
+    Therefore
+    \begin{equation}\label{100_2}
+        -a_0(x)x^3+a_1(x)x^2-a_2(x)x=0
+    \end{equation}
+    Now adding (\ref{100_1}) and (\ref{100_2}), we get $a_1(x)=0$ for all $x$. Now for $x=0$, $\det{(yB)}=y^3\det{B}=0$ i.e., $a_0(0)y^3+a_2(0)y=0$ for all $y$. Therefore $a_0(0)=0$ and $a_2(0)=0$. But $a_0(x)$ is constant, hence $a_0(x)=0$ for all $x$. So from (\ref{100_1}), we get $a_2(x)=0$ for all $x$. Hence $\det{(xA+yB)}=0$.
+\end{solution}
+
+\question Let $A$ be an $n\times n$ symmetric invertible matrix with positive real entries, $n\geq 2$. Show that $A^{-1}$ has at most $n^2-2n$ entries equal to zero.
+
+\question Let $A$ and $B$ be $2\times 2$ matrices with integer entries such that $A, A+B, A+2B, A+3B$ and $A+4B$ are all invertible matrices whose inverses have integer entries. Prove that $A+5B$ is invertible and that its inverse has integer entries.
+
+\question Given two $n\times n$ matrices $A$ and $B$ for which there exist nonzero numbers $a$ and $b$ such that $AB=aA+bB$, prove that $A$ and $B$ commute.
+
+\question Let $Z$ denote the set of points in $\R^n$ whose coordinates are $0$ or $1$. (Thus $Z$ has $2^n$ elements, which are the vertices of a unit hypercude in $\R^n$.) Let $k$ be given, $0\leq k\leq n$. Finde the miximum of the number of points in $Z\cap V$ over all vector subspaces $V\subseteq\R^n$ of dimension $k$.
+
+\begin{solution}
+    Let us consider the matrix whose rows are the elements of $V\cap Z$. Since $V\cap Z\subseteq V$, so $\dim{(V\cap Z)}\leq\dim{V}=k$. By construction it has row rank at most $k$. Therefore it alse has column rank at most $k$. In particular, there are $k$ columns such that any other column is a linear combination of these $k$ columns. It means that the coordinates of each point of $V\cap Z$ are determined by the $k$ coordinates that lie in these $k$ columns. Since each such coordinate can have only two values, $V\cap Z$ can have at most $2^k$ elements.\\
+    This upper bound is reached for the vectors that have all possible choices of $0$ and $1$ for the first $k$ entries, and $0$ for the remaining entries.
+\end{solution}
+
+\question[\textbf{Important}] Every polynomial $P(x)$ of degree $m$ may be expressed in the from
+$$P(x)=b_0\binom{x}{m}+b_1\binom{x}{m-1}+\cdots b_{m-1}\binom{x}{1}+b_m.$$
+That is the polynomials $\binom{x}{m}=x(x-1)\cdots(x-m+1)/m!$, $m=0, 1, 2,\ldots$ from a basis of the vector space of polynomials with real coefficients.
+
+\question[P\&B, 242] let $n$ be a positive integer and $P(x)$ an $n$th-degree polynomial with complex coefficients such that $P(0), P(1), \ldots, P(n)$ are all integers. Prove that the polynomial $n!P(x)$ has integer coefficients.
+
+\question[P\&B, 282] Let $G$ be a group with the following properties:
+\begin{enumerate}
+    \item $G$ has no element of order 2.
+    \item $(xy)^2=(yx)^2$, for all $x,y\in G$.
+\end{enumerate}
+Prove that $G$ is Abelian.
+
+\question[P\&B, 284] Given $\Gamma$ a finite multiplicative group of matrices with complex entries, the sum of the matrices in $\Gamma$ is denoted by $M$. Prove that $\det{M}$ is an integer.
+
+\begin{solution}
+    Let $\Gamma=\{M_1, M_2, \ldots, M_k\}$. Then $M=M_1+M_2+\cdots+M_k$. Now
+    \begin{align*}
+        M^2=(M_1+M_2+\cdots+M_k)^2=\sum_{i=1}^{k}{M_i}\left(\sum_{j=1}^{k}{M_j}\right)&=\sum_{i=1}^{k}{M_i}\left(\sum_{G\in\Gamma}{M_i^{-1}G}\right)\\
+        &=\sum_{G\in\Gamma}\sum_{i=1}^{k}{M_i}{(M_i^{-1}G)}\\
+        &=\sum_{G\in\Gamma}\sum_{i=1}^{k}{G}\\
+        &=\sum_{G\in\Gamma}{kG}\\
+        &=kM
+    \end{align*}
+    Thus $\det{M^2}=k^n\det{M}$. Hence either $\det{M}=0$ or $\det{M}=k^n$, both are integers.
+\end{solution}
+
+\question[P\&B, 286] Prove that the sequence $(\sin{n})_n$ is dense in the interval $[-1,1]$.
+
+\begin{solution}
+    Consider the additive group of real numbers $$S=\{n+2m\pi: m,n\in\Z\}.$$
+    $S$ is not cyclic because $n$ and $2m\pi$ can not be the integer multiple of the same number. Therefore $S$ is dense in $\R$. Now consider the map $f:\R\to[-1,1]$ defined by $f(x)=\sin{x}$. Since \textbf{continuous image of a dense set is dense}, the set $\{\sin{x}: x\in S\}$ is dense in $[-1,1]$. But this set is same as the set $\{\sin{n}:n\in Z\}$. Hence $(\sin{n})_n$ is dense in $[-1,1]$.
+\end{solution}
+
+\question[P\&B, 304] Let $p(x)=x^2-3x+2$. Show that for any positive integer $n$ there exist unique numbers $a_n$ and $b_n$ such that the polynomial $q(x)=x^n-a_nx-b_n$ is divisible by $p(x)$.
+
+\question let $(x_n)_n$ be a sequence of real numbers such that $$\lim_{n\to\infty}{(2x_{n+1}-x_n)}=L.$$
+Prove that the sequence $(x_n)_n$ converges and its limit is $L$.
+\begin{solution}
+    For every $\epsilon>0$, there is $n(\epsilon)$ such that if $n\geq n(\epsilon)$, then
+    $$L-\epsilon<2x_{n+1}-x_n<L+\epsilon.$$
+    For such $n$ and for some $k>0$, we have the inequalities
+    $$L-\epsilon<2x_{n+1}-x_n<L+\epsilon$$
+    $$L-\epsilon<2x_{n+2}-x_{n+1}<L+\epsilon$$
+    $$L-\epsilon<2x_{n+3}-x_{n+2}<L+\epsilon$$
+    $$\vdots$$
+    $$L-\epsilon<2x_{n+k}-x_{n+k-1}<L+\epsilon$$
+    Now multiply each inequality by suitable powers of 2 we get,
+    $$L-\epsilon<2x_{n+1}-x_n<L+\epsilon$$
+    $$2(L-\epsilon)<4x_{n+2}-2x_{n+1}<2(L+\epsilon)$$
+    $$4(L-\epsilon)<8x_{n+3}-4x_{n+2}<4(L+\epsilon)$$
+    $$\vdots$$
+    $$2^{k-1}(L-\epsilon)<2^{k}x_{n+k}-2^{k-1}x_{n+k-1}<2^{k-1}(L+\epsilon)$$
+    Now adding these inequalities, we obtain,
+    $$(1+2+2^2+\cdots+2^{k-1})(L-\epsilon)<2^{k}x_{n+k}-x_n<(1+2+2^2+\cdots+2^{k-1})(L+\epsilon)$$
+    Divide this inequality by $\frac{1}{2^k}$ we get
+    $$\left(\frac{1}{2}+\frac{1}{2^2}+\cdots+\frac{1}{2^k}\right)(L-\epsilon)<x_{n+k}-\frac{1}{2^{k}}x_n<\left(\frac{1}{2}+\frac{1}{2^2}+\cdots+\frac{1}{2^k}\right)(L+\epsilon),$$
+    which is
+    $$\left(1-\frac{1}{2^k}\right)(L-\epsilon)<x_{n+k}-\frac{1}{2^{k}}x_n<\left(1-\frac{1}{2^k}\right)(L+\epsilon)$$
+    Now choose $k$ such that $\left|\frac{1}{2^{k}}x_n\right|<\epsilon$ and $\left|\frac{1}{2^{k}}(L\pm\epsilon)\right|<\epsilon$. Then
+    $$\left(1-\frac{1}{2^k}\right)(L-\epsilon)=(L-\epsilon)-\frac{1}{2^{k}}(L-\epsilon)>L-2\epsilon.$$
+    Similarly,
+    $$\left(1-\frac{1}{2^k}\right)(L+\epsilon)=(L+\epsilon)-\frac{1}{2^{k}}(L+\epsilon)<L+2\epsilon.$$
+    Thus for all $m>n+k$,
+    $$L-2\epsilon+\frac{1}{2^{k}}<x_{n+k}<L+2\epsilon+\frac{1}{2^{k}}$$
+    or
+    $$L-3\epsilon<x_{n+k}<L+3\epsilon.$$
+    Hence $x_n$ converges to $L$.
+\end{solution}
+
+\question[P\&B, 329] Show that if the seies $\sum{a_n}$ converges, where $(a_n)_n$ is a decreasing sequence, then $\lim_{n\to\infty}{na_n}=0$.
+
+\question[P\&B, 331] Let $t$ and $\epsilon$ be real numbers with $|\epsilon|<1$. Prove that the equation $x-\epsilon\sin{x}=t$ has a unique real solution. (Use Fixed-Point Theorem)
+
+\question[P\&B, 350] Given a sequence $(a_n)_n$ such that for any $\gamma>1$ the subsequence $a_{\left\lfloor\gamma^n\right\rfloor}$ converges to zero, does it follow that the sequence $(a_n)_n$ itself converges to zero?
+
+\question[P\&B, 351] Let $f:(0,\infty)\to\R$ be a continuous function with the property that any $x>0$, $lim_{n\to\infty}{f(nx)}=0$. Prove that $\lim_{x\to\infty}{f(x)}=0$.
+
+\question Does the series $\sum_{n=1}^{\infty}{\frac{\sin{n}}{n}}$ converge?
+
+\begin{solution}
+    $$\sum_{k=1}^{n}{\sin{n}}=\Im{\left(\sum_{k=1}^{n}{e^{ik}}\right)}=\Im{\left(e^i\frac{1-e^{ik}}{1-e^i}\right)}.$$
+    Since $|\Im{(z)}|\leq|z|$ for all $z\in\C$, so we have
+    $$\left|\sum_{k=1}^{n}{\sin{n}}\right|=\left|\Im{\left(\sum_{k=1}^{n}{e^{ik}}\right)}\right|=\left|\Im{\left(e^i\frac{1-e^{ik}}{1-e^i}\right)}\right|\leq \left|e^i\frac{1-e^{ik}}{1-e^i}\right|\leq\frac{2}{|1-e^i|}<\infty.$$
+    So by Dirichlet test, the above series $\sum_{n=1}^{\infty}{\frac{\sin{n}}{n}}$ converges.
+\end{solution}
+\question Does the series $\sum_{n=1}^{\infty}{\frac{|\sin{n}|}{n}}$ converge?
+
+\question Let $(n_k)_{k\geq 1}$ be a strictly increasing sequence of positive integers with the property that $$\lim_{k\to\infty}{\frac{n_k}{n_1n_2\cdots n_{k-1}}}=\infty.$$ Prove that the series $\sum_{k\geq 1}{\frac{1}{n_k}}$ is convergent and that its sum is an irrational number.
+
+\question Let $a_1, a_2,\ldots, a_n, \ldots$ be a nonnegative numbers. Prove that $\sum_{n=1}^{\infty}{a_n}<\infty$ implies\\ $\sum_{n=1}^{\infty}{\sqrt{a_{n+1}a_n}}<\infty$.
+
+\question[P\&B, 384] let $f:(0,\infty)\to(0,\infty)$ be an increasing function with $\lim_{t\to\infty}{\frac{f(2t)}{f(t)}}=1$. Prove that $\lim_{t\to\infty}{\frac{f(mt)}{f(t)}}=1$ for any $m>0$.
+
+\begin{solution}
+    Let $m>0$. Assume that $m>1$. There exist $n\in\N$ such that $m<2^n$. Since $f$ is increasing, so for any $t$, $f(t)\leq f(mt)\leq f(2^nt)$. Then
+    $$1 \leq \frac{f(mt)}{f(t)}\leq \frac{f(2^nt)}{f(t)}.$$
+    But
+    $$\frac{f(2^nt)}{f(t)}=\frac{f(2^nt)}{f(2^{n-1}t)}\frac{f(2^{n-1}t)}{f(2^{n-2}t)}\cdots\frac{f(2^nt)}{f(t)},$$
+    which converges to 1 as $t\to\infty$. Thus $\frac{f(mt)}{f(t)}\to 1$ as $t\to\infty$.
+\end{solution}
+
+\question Find all continuous functions $f:\R\to\R$ satisfying $f(0)=1$ and $$f(2x)-f(x)=x,\,\,\,\,\text{for all}\,\, x\in\R.$$
+
+\begin{solution}
+    Replace $x$ by $\frac{x}{2}$ we get
+    $$f(x)-f\left(\frac{x}{2}\right)=\frac{x}{2}.$$
+    Continuing in this way we get
+    $$f\left(\frac{x}{2}\right)-f\left(\frac{x}{4}\right)=\frac{x}{4},$$
+    $$f\left(\frac{x}{4}\right)-f\left(\frac{x}{8}\right)=\frac{x}{8},$$
+    $$\vdots$$
+    $$f\left(\frac{x}{2^{n-1}}\right)-f\left(\frac{x}{2^n}\right)=\frac{x}{2^n}.$$
+    Summing up, we obtain
+    $$f(x)-f\left(\frac{x}{2^n}\right)=x\left(\frac{x}{2}+\frac{x}{4}+\frac{x}{8}+\cdots+\frac{x}{2^n}\right)$$
+    or
+    $$f(x)-f\left(\frac{x}{2^n}\right)=x\left(1-\frac{1}{2^n}\right).$$
+    As $n\to\infty$, we get $f(x)-1=x$ or $f(x)=x+1$.
+\end{solution}
+
+\question[P\&B, 387] Does there exist a continuous function $f:[0,1]\to\R$ that assumes every element of its range an even (finite) number of times?
+\begin{solution}
+    Yes
+\end{solution}
+
+\question[P\&B, 389] Let $f:\R\to\R$ be a continuous function with the property that
+$$\lim_{h\to 0^+}{\frac{f(x+2h)-f(x+h)}{h}}=0,\,\,\,\text{for all}\,\, x\in\R.$$
+Prove that $f$ is constant.
+
+\question[P\&B, 392] Prove that there exists a continuous surjective function $\psi:[0,1]\to[0,1]\times[0,1]$ that takes each values infinitely many times.
+
+\question Prove that every continuous mapping of a circle into a line carries some pari of diametrically opposite points to the same point.
+
+\question[P\&B, 397] Let $f:\R\to\R$ be a continuous function such that $|f(x)-f(y)|\geq|x-y|$ for all $x, y\in\R$. Prove that the range of $f$ is all of $\R$.
+
+\question let $f:\R\to\R$ be a twice-differentiable function, with positive second derivative. Prove that $$f(x+f'(x))\geq f(x),$$ for any real number $x$.
+
+\question[P\&B, 418] Let $n>1$ be an integer, and let $f:[a,b]\to\R$ be a continuous function, $n-$times differentiable on $(a,b)$, with the property that the graph of $f$ has $n+1$ collinear points. Prove that there exists a point $c\in(a,b)$ with the property that $f^{(n)}(c)=0$.
+
+\question[P\&B, 424] Let $P(x)$ be a polynomial with real coefficients such that for every positive integer $n$, the equation $P(x)=n$ has at least one rational root. Prove that $P(x)=ax+b$ with $a$ and $b$ rational numbers.
+
+\question Let $(a_n)_n$ be a bounded convex sequence. Prove that $$\lim_{n\to\infty}{(a_{n+1}-a_n)}=0.$$
+
+\question[P\&B, 428] Show that if a function $f:[a,b]\to\R$ is convex, then it is continuous on $(a,b)$.
+
+\question[P\&B, 464] Let $P(x)$ be a polynomial with real coefficients. Prove that
+$$\int_{0}^{\infty}{e^{-x}P(x)dx}=P(0)+P'(0)+P''(0)+\cdots.$$
+
+\question[P\&B, 473] Determine the continuous functions $f:[0,1]\to\R$ that satisfy
+$$\int_{0}^{1}{f(x)(x-f(x))dx}=\frac{1}{12}.$$
+
+\begin{solution}
+    \begin{align*}
+        \int_{0}^{1}{f(x)(x-f(x))dx}=\frac{1}{12}\implies&\int_{0}^{1}{(xf(x)-(f(x))^2)dx}=\int_{0}^{1}{\frac{x^2}{4}dx}\\
+        \implies&\int_{0}^{1}{\left(-xf(x)+(f(x))^2+\frac{x^2}{4}\right)dx}=0\\
+        \implies&\int_{0}^{1}{\left(f(x)-\frac{x}{2}\right)^2dx}=0
+    \end{align*}
+    Thus $f(x)=\frac{x}{2}$ for all $x\in[0,1]$.
+\end{solution}
+
+\question[P\&B, 475] Let $f:[0,1]\to\R$ be a continuous function such that
+$$\int_{0}^{1}{f(x)dx}=\int_{0}^{1}{xf(x)dx}=1.$$
+Prove that
+$$\int_{0}^{1}{x^2f(x)dx}\geq 4.$$
+
+\question Let $A$ be a nonempty set and let $f:\mathcal{P}(A)\to\mathcal{P}(A)$ be an increasing function on the set of subses of $A$, meaning that
+$$f(X)\subset f(Y)\,\,\,\,\,\text{if }X\subset Y.$$
+Prove that there exists $T$, a subset of $A$, such that $f(T)=T$.
